@@ -15,9 +15,10 @@ public class Setting
 {
     @FXML Button signOutBtn, letterOnlyBtn, docOnlyBtn, parcelOnlyBtn, historyBtn, settingBtn, backBtn, changePassBtn, creditBtn;
     @FXML Label userLabel, roomLabel;
-    private String username;
+    private String user;
     private String room;
     int check;
+    private Receiver r;
 
     @FXML public void initialize()
     {
@@ -31,15 +32,8 @@ public class Setting
                 }
                 else if (check == 1)
                 {
-                    if (username.equals("test"))
-                    {
-                        room = "000";
-                    }
-                    else
-                    {
-                        room = "-1";
-                    }
-                    userLabel.setText(username);
+                    room = r.getId();
+                    userLabel.setText(user);
                     roomLabel.setText(room);
                 }
 
@@ -56,8 +50,9 @@ public class Setting
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         History hit = loader.getController();
-        hit.setUser(username);
+        hit.setUser(user);
         hit.setCheck(1);
+        hit.setR(r);
 
         stage.show();
     }
@@ -71,7 +66,8 @@ public class Setting
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         Login in = loader.getController();
-        in.setCheck(0);
+        in.setCheck(-1);
+        in.setR(r);
 
         stage.show();
     }
@@ -85,8 +81,9 @@ public class Setting
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         Developer dev = loader.getController();
-        dev.setUser(username);
+        dev.setUser(user);
         dev.setCheck(1);
+        dev.setR(r);
 
         stage.show();
     }
@@ -100,8 +97,9 @@ public class Setting
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         ChangePassword chg = loader.getController();
-        chg.setUser(username);
+        chg.setUser(user);
         chg.setCheck(1);
+        chg.setR(r);
 
         stage.show();
     }
@@ -115,19 +113,25 @@ public class Setting
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         UserMenu menu = loader.getController();
-        menu.setUser(username);
+        menu.setUser(user);
         menu.setCheck(1);
+        menu.setR(r);
 
         stage.show();
     }
 
-    public void setUser(String username)
+    public void setUser(String user)
     {
-        this.username = username;
+        this.user = user;
     }
 
     public void setCheck(int check)
     {
         this.check = check;
+    }
+
+    public void setR(Receiver r)
+    {
+        this.r = r;
     }
 }

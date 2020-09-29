@@ -12,9 +12,10 @@ import java.io.IOException;
 public class Developer
 {
     @FXML Button backBtn;
-    private String username;
+    private String user;
     private String room;
     int check;
+    private Receiver r;
 
     @FXML public void initialize()
     {
@@ -32,8 +33,9 @@ public class Developer
             stage.setScene(new Scene(loader.load(), 800, 600));
 
             Setting sett = loader.getController();
-            sett.setUser(username);
+            sett.setUser(user);
             sett.setCheck(check);
+            sett.setR(r);
 
             stage.show();
         }
@@ -46,18 +48,25 @@ public class Developer
             stage.setScene(new Scene(loader.load(), 800, 600));
 
             Login in = loader.getController();
+            in.setCheck(-1);
+            in.setR(r);
 
             stage.show();
         }
     }
 
-    public void setUser(String username)
+    public void setUser(String user)
     {
-        this.username = username;
+        this.user = user;
     }
 
     public void setCheck(int check)
     {
         this.check = check;
+    }
+
+    public void setR(Receiver r)
+    {
+        this.r = r;
     }
 }

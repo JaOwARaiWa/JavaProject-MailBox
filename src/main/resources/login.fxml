@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -20,9 +21,9 @@
       <AnchorPane prefHeight="600.0" prefWidth="800.0">
          <children>
             <Label layoutX="203.0" layoutY="180.0" prefHeight="240.0" prefWidth="400.0" style="-fx-border-color: black;" />
-            <Button fx:id="loginBtn" layoutX="376.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleLoginBtnOnAction" text="Log in" />
+            <Button fx:id="loginBtn" defaultButton="true" layoutX="376.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleLoginBtnOnAction" text="Log in" />
             <TextField fx:id="usernameField" layoutX="376.0" layoutY="270.0" />
-            <TextField fx:id="passwordField" layoutX="376.0" layoutY="315.0" />
+            <PasswordField fx:id="passwordField" layoutX="376.0" layoutY="316.0" />
             <Label layoutX="241.0" layoutY="197.0" prefHeight="50.0" text="Welcome to Elite Box">
                <font>
                   <Font name="Mitr Medium" size="30.0" />

@@ -17,9 +17,10 @@ public class History
     Button signOutBtn, letterOnlyBtn, docOnlyBtn, parcelOnlyBtn, historyBtn, settingBtn, backBtn, changePassBtn, creditBtn;
     @FXML
     Label userLabel, roomLabel;
-    private String username;
+    private String user;
     private String room;
     int check;
+    private Receiver r;
 
     @FXML public void initialize()
     {
@@ -33,15 +34,8 @@ public class History
                 }
                 else if (check == 1)
                 {
-                    if (username.equals("test"))
-                    {
-                        room = "000";
-                    }
-                    else
-                    {
-                        room = "-1";
-                    }
-                    userLabel.setText(username);
+                    room = r.getId();
+                    userLabel.setText(user);
                     roomLabel.setText(room);
                 }
 
@@ -58,8 +52,9 @@ public class History
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         Setting sett = loader.getController();
-        sett.setUser(username);
+        sett.setUser(user);
         sett.setCheck(1);
+        sett.setR(r);
 
         stage.show();
     }
@@ -73,7 +68,8 @@ public class History
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         Login in = loader.getController();
-        in.setCheck(0);
+        in.setCheck(-1);
+        in.setR(r);
 
         stage.show();
     }
@@ -87,19 +83,25 @@ public class History
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         UserMenu menu = loader.getController();
-        menu.setUser(username);
+        menu.setUser(user);
         menu.setCheck(1);
+        menu.setR(r);
 
         stage.show();
     }
 
-    public void setUser(String username)
+    public void setUser(String user)
     {
-        this.username = username;
+        this.user = user;
     }
 
     public void setCheck(int check)
     {
         this.check = check;
+    }
+
+    public void setR(Receiver r)
+    {
+        this.r = r;
     }
 }
