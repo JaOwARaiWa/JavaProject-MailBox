@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class History
+public class RoomerMenu
 {
     @FXML Button signOutBtn, letterOnlyBtn, docOnlyBtn, parcelOnlyBtn, historyBtn, settingBtn, backBtn;
     @FXML Label userLabel, roomLabel;
@@ -31,22 +31,6 @@ public class History
         });
     }
 
-    @FXML public void handleSettingBtnOnAction(ActionEvent event) throws IOException
-    {
-        Button b = (Button) event.getSource();
-        Stage stage = (Stage) b.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting_roomer.fxml"));
-        stage.setScene(new Scene(loader.load(), 800, 600));
-
-        Setting sett = loader.getController();
-        sett.setUser(user);
-        sett.setIden(iden);
-        sett.setIndex(index);
-
-        stage.show();
-    }
-
     @FXML public void handleSignOutBtnOnAction(ActionEvent event) throws IOException
     {
         Button b = (Button) event.getSource();
@@ -63,18 +47,34 @@ public class History
         stage.show();
     }
 
-    @FXML public void handleBackBtnOnAction(ActionEvent event) throws IOException
+    @FXML public void handleHistoryBtnOnAction(ActionEvent event) throws IOException
     {
         Button b = (Button) event.getSource();
         Stage stage = (Stage) b.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/roomermenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mailhistory_roomer.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
 
-        RoomerMenu menu = loader.getController();
-        menu.setUser(user);
-        menu.setIden(iden);
-        menu.setIndex(index);
+        History hit = loader.getController();
+        hit.setUser(user);
+        hit.setIden(iden);
+        hit.setIndex(index);
+
+        stage.show();
+    }
+
+    @FXML public void handleSettingBtnOnAction(ActionEvent event) throws IOException
+    {
+        Button b = (Button) event.getSource();
+        Stage stage = (Stage) b.getScene().getWindow();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting_roomer.fxml"));
+        stage.setScene(new Scene(loader.load(), 800, 600));
+
+        Setting sett = loader.getController();
+        sett.setUser(user);
+        sett.setIden(iden);
+        sett.setIndex(index);
 
         stage.show();
     }
@@ -93,5 +93,4 @@ public class History
     {
         this.index = index;
     }
-
 }

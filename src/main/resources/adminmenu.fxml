@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.UserMenu">
+<AnchorPane maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.AdminMenu">
    <children>
       <Label layoutY="144.0" prefHeight="100.0" prefWidth="801.0" style="-fx-border-color: black;" />
       <Label layoutX="49.0" layoutY="46.0" prefHeight="50.0" prefWidth="140.0" text="Welcome">
@@ -37,22 +37,17 @@
             <Font name="Mitr Medium" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="letterOnlyBtn" layoutX="100.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" text="Letter Only">
+      <Button fx:id="addStaffBtn" layoutX="100.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" text="Add Staff">
          <font>
             <Font name="Mitr Medium" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="docOnlyBtn" layoutX="250.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" text="Document Only">
+      <Button fx:id="activityBtn" layoutX="250.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" text="Activity">
          <font>
             <Font name="Mitr Medium" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="parcelOnlyBtn" layoutX="400.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" text="Parcel Only">
-         <font>
-            <Font name="Mitr Medium" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="historyBtn" layoutX="550.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleHistoryBtnOnAction" prefHeight="50.0" prefWidth="70.0" text="History">
+      <Button fx:id="profileBtn" layoutX="400.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" text="Profile">
          <font>
             <Font name="Mitr Medium" size="12.0" />
          </font>

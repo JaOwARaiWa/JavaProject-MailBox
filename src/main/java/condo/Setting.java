@@ -16,9 +16,9 @@ public class Setting
     @FXML Button signOutBtn, letterOnlyBtn, docOnlyBtn, parcelOnlyBtn, historyBtn, settingBtn, backBtn, changePassBtn, creditBtn;
     @FXML Label userLabel, roomLabel;
     private String user;
-    private String room;
-    int check;
-    private Receiver r;
+    private String pass;
+    private String iden;
+    private int index;
 
     @FXML public void initialize()
     {
@@ -26,16 +26,6 @@ public class Setting
             @Override
             public void run()
             {
-                if (check == 0)
-                {
-
-                }
-                else if (check == 1)
-                {
-                    room = r.getId();
-                    userLabel.setText(user);
-                    roomLabel.setText(room);
-                }
 
             }
         });
@@ -46,13 +36,13 @@ public class Setting
         Button b = (Button) event.getSource();
         Stage stage = (Stage) b.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/history.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mailhistory_roomer.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         History hit = loader.getController();
         hit.setUser(user);
-        hit.setCheck(1);
-        hit.setR(r);
+        hit.setIden(iden);
+        hit.setIndex(index);
 
         stage.show();
     }
@@ -66,8 +56,9 @@ public class Setting
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         Login in = loader.getController();
-        in.setCheck(-1);
-        in.setR(r);
+        in.setUser(user);
+        in.setIden(iden);
+        in.setIndex(index);
 
         stage.show();
     }
@@ -82,8 +73,8 @@ public class Setting
 
         Developer dev = loader.getController();
         dev.setUser(user);
-        dev.setCheck(1);
-        dev.setR(r);
+        dev.setIden(iden);
+        dev.setIndex(index);
 
         stage.show();
     }
@@ -98,8 +89,8 @@ public class Setting
 
         ChangePassword chg = loader.getController();
         chg.setUser(user);
-        chg.setCheck(1);
-        chg.setR(r);
+        chg.setIden(iden);
+        chg.setIndex(index);
 
         stage.show();
     }
@@ -109,13 +100,13 @@ public class Setting
         Button b = (Button) event.getSource();
         Stage stage = (Stage) b.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/usermenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/roomermenu.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
 
-        UserMenu menu = loader.getController();
+        RoomerMenu menu = loader.getController();
         menu.setUser(user);
-        menu.setCheck(1);
-        menu.setR(r);
+        menu.setIden(iden);
+        menu.setIndex(index);
 
         stage.show();
     }
@@ -125,13 +116,14 @@ public class Setting
         this.user = user;
     }
 
-    public void setCheck(int check)
+    public void setIden(String iden)
     {
-        this.check = check;
+        this.iden = iden;
     }
 
-    public void setR(Receiver r)
+    public void setIndex(int index)
     {
-        this.r = r;
+        this.index = index;
     }
+
 }

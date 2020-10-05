@@ -11,14 +11,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class UserMenu
+public class StaffMenu
 {
-    @FXML Button signOutBtn, letterOnlyBtn, docOnlyBtn, parcelOnlyBtn, historyBtn, settingBtn, backBtn;
+    @FXML Button signOutBtn, storeLetterBtn, storeDocBtn, storeParcelBtn, receivedHistoryBtn, settingBtn, backBtn;
     @FXML Label userLabel, roomLabel;
     private String user;
-    private String room;
-    int check;
-    private Receiver r;
+    private String pass;
+    private String iden;
 
     @FXML public void initialize()
     {
@@ -26,17 +25,7 @@ public class UserMenu
             @Override
             public void run()
             {
-                if (user.equals(r.getName()))
-                {
-                    room = r.getId();
-                    userLabel.setText(user);
-                    roomLabel.setText(room);
-                }
-                else
-                {
-                    userLabel.setText("test");
-                    roomLabel.setText("test");
-                }
+
             }
         });
     }
@@ -50,24 +39,19 @@ public class UserMenu
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         Login in = loader.getController();
-        in.setCheck(-1);
-        in.setR(r);
 
         stage.show();
     }
 
-    @FXML public void handleHistoryBtnOnAction(ActionEvent event) throws IOException
+    @FXML public void handleReceivedHistoryBtnOnAction(ActionEvent event) throws IOException
     {
         Button b = (Button) event.getSource();
         Stage stage = (Stage) b.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/history.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mailhistory_roomer.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         History hit = loader.getController();
-        hit.setUser(user);
-        hit.setCheck(1);
-        hit.setR(r);
 
         stage.show();
     }
@@ -77,29 +61,12 @@ public class UserMenu
         Button b = (Button) event.getSource();
         Stage stage = (Stage) b.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting_roomer.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
 
         Setting sett = loader.getController();
-        sett.setUser(user);
-        sett.setCheck(1);
-        sett.setR(r);
 
         stage.show();
     }
 
-    public void setUser(String user)
-    {
-        this.user = user;
-    }
-
-    public void setCheck(int check)
-    {
-        this.check = check;
-    }
-
-    public void setR(Receiver r)
-    {
-        this.r = r;
-    }
 }

@@ -11,63 +11,107 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class Login
+public class Login implements Account
 {
-    @FXML Button loginBtn, creditBtn, changePassBtn;
+    @FXML Button loginBtn, creditBtn;
     @FXML Label faultLabel;
     @FXML TextField usernameField;
     @FXML PasswordField passwordField;
-    private String user, username, password;
-    int check;
-    private Address a;
-    private Receiver r;
+    private String user;
+    private String pass;
+    private String iden;
+    private int index;
+    private int i;
+    private ArrayList<String> userList = new ArrayList<>();
+    private ArrayList<String> passList = new ArrayList<>();
+    private ArrayList<String> idenList = new ArrayList<>();
+    private ArrayList acc;
+    private int check = 0;
 
-    @FXML public void initialize()
+    @FXML public void initialize() throws IOException
     {
-        setCheck(check);
-
-        if (check == -1)
-        {
-            username = r.getId();
-            password = r.getPassword();
-            System.out.println(r.getPassword());
-            setCheck(-1);
-        }
-        else if (check == 0)
-        {
-            a = new Address('A', '1', "01");
-            r = new Receiver("First", a);
-            r.setId(a);
-            r.setPassword("0123");
-            username = r.getId();
-            password = r.getPassword();
-            System.out.println(r.getPassword());
-        }
+        acc = Account.readAcc();
+        userList = (ArrayList<String>) acc.get(0);
+        passList = (ArrayList<String>) acc.get(1);
+        idenList = (ArrayList<String>) acc.get(2);
     }
 
     @FXML public void handleLoginBtnOnAction(ActionEvent event) throws IOException
     {
-        System.out.println(usernameField.getText());
-        System.out.println(passwordField.getText());
-
-        if (passwordField.getText().equals(password) && usernameField.getText().equals(username) || (passwordField.getText().equals("-1") && usernameField.getText().equals("-1")))
+        user = usernameField.getText();
+        pass = passwordField.getText();
+        int fault = 0;
+        for (i = 0; i < userList.size(); i-=-1)
         {
-            user = r.getName();
+            if (user.equals(userList.get(i)) && pass.equals(passList.get(i)))
+            {
+                iden = idenList.get(i);
+                index = i;
+                fault = -1;
+                break;
+            }
+            else
+            {
+                fault-=-1;
+            }
+        }
+        if (fault != -1)
+        {
+            iden = "Fault";
+        }
+
+        System.out.println(user);
+        System.out.println(pass);
+        System.out.println(iden);
+
+        if (iden.equals("ROOMER"))
+        {
             Button b = (Button) event.getSource();
             Stage stage = (Stage) b.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/usermenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/roomermenu.fxml"));
             stage.setScene(new Scene(loader.load(), 800, 600));
 
-            UserMenu menu = loader.getController();
+            RoomerMenu menu = loader.getController();
             menu.setUser(user);
-            menu.setCheck(1);
-            menu.setR(r);
+            menu.setIden(iden);
+            menu.setIndex(index);
 
             stage.show();
         }
-        else
+        else if (iden.equals("ADMIN"))
+        {
+            Button b = (Button) event.getSource();
+            Stage stage = (Stage) b.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/adminmenu.fxml"));
+            stage.setScene(new Scene(loader.load(), 800, 600));
+
+            AdminMenu menu = loader.getController();
+            /*menu.setUser(user);
+            menu.setIden(iden);
+            menu.setIndex(index);*/
+
+            stage.show();
+        }
+        else if (iden.equals("STAFF"))
+        {
+            Button b = (Button) event.getSource();
+            Stage stage = (Stage) b.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/staffmenu.fxml"));
+            stage.setScene(new Scene(loader.load(), 800, 600));
+
+            StaffMenu menu = loader.getController();
+            /*menu.setUser(user);
+            menu.setIden(iden);
+            menu.setIndex(index);*/
+
+            stage.show();
+        }
+        else if (iden.equals("Fault"))
         {
             faultLabel.setText("Wrong user or password, please try again");
         }
@@ -87,28 +131,19 @@ public class Login
         stage.show();
     }
 
-    @FXML public void handleChangePassBtnOnAction(ActionEvent event) throws IOException
+    public void setUser(String user)
     {
-        Button b = (Button) event.getSource();
-        Stage stage = (Stage) b.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/changepassword.fxml"));
-        stage.setScene(new Scene(loader.load(), 800, 600));
-
-        ChangePassword chg = loader.getController();
-        chg.setCheck(-1);
-        chg.setR(r);
-
-        stage.show();
+        this.user = user;
     }
 
-    public void setCheck(int check)
+    public void setIden(String iden)
     {
-        this.check = check;
+        this.iden = iden;
     }
 
-    public void setR(Receiver r)
+    public void setIndex(int index)
     {
-        this.r = r;
+        this.index = index;
     }
+
 }

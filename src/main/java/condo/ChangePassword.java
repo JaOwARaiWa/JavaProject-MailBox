@@ -12,16 +12,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ChangePassword
+public class ChangePassword implements Account
 {
     @FXML Button backBtn, changeBtn;
     @FXML Label progressLabel;
     @FXML TextField usernameField;
     @FXML PasswordField newPassField, confirmField;
     private String user;
-    private String newpass;
-    int check;
-    private Receiver r;
+    private String pass;
+    private String iden;
+    private String id;
+    private int index;
+    private String newPass;
+    private String confirm;
+
 
     @FXML public void initialize()
     {
@@ -30,32 +34,39 @@ public class ChangePassword
 
     @FXML public void handleBackBtnOnAction(ActionEvent event) throws IOException
     {
-        if (check == 1)
+        if (iden.equals("ROOMER"))
         {
             Button b = (Button) event.getSource();
             Stage stage = (Stage) b.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting_roomer.fxml"));
             stage.setScene(new Scene(loader.load(), 800, 600));
 
             Setting sett = loader.getController();
-            sett.setUser(user);
-            sett.setCheck(1);
-            sett.setR(r);
 
             stage.show();
         }
-        else if (check == -1)
+        else if (iden.equals("ADMIN"))
         {
             Button b = (Button) event.getSource();
             Stage stage = (Stage) b.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting_admin.fxml"));
             stage.setScene(new Scene(loader.load(), 800, 600));
 
-            Login in = loader.getController();
-            in.setCheck(-1);
-            in.setR(r);
+            Setting sett = loader.getController();
+
+            stage.show();
+        }
+        else if (iden.equals("STAFF"))
+        {
+            Button b = (Button) event.getSource();
+            Stage stage = (Stage) b.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting_staff.fxml"));
+            stage.setScene(new Scene(loader.load(), 800, 600));
+
+            Setting sett = loader.getController();
 
             stage.show();
         }
@@ -64,38 +75,23 @@ public class ChangePassword
 
     @FXML public void handleChangeBtnOnAction(ActionEvent event) throws IOException
     {
-        System.out.println(usernameField.getText());
-        System.out.println(newPassField.getText());
-        System.out.println(confirmField.getText());
+        id = usernameField.getText();
+        newPass = newPassField.getText();
+        confirm = confirmField.getText();
 
-        if (newPassField.getText().equals(confirmField.getText()))
+        System.out.println(id);
+        System.out.println(newPass);
+        System.out.println(confirm);
+
+        if (id.equals(user) && newPass.equals(confirm))
         {
-            newpass = newPassField.getText();
-            r.changePassword(newpass);
-            progressLabel.setText("Your password have changed");
-            usernameField.setText("");
-            newPassField.setText("");
-            confirmField.setText("");
+            Account.changePass(index, newPass);
+            progressLabel.setText("Your password has changed");
         }
         else
         {
-            progressLabel.setText("Confirm password is not match, Please try again");
+            progressLabel.setText("Wrong user or mismatch confirm password, please try again");
         }
-
-        /*
-        Button b = (Button) event.getSource();
-        Stage stage = (Stage) b.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/changepassword.fxml"));
-        stage.setScene(new Scene(loader.load(), 800, 600));
-
-        ChangePassword chng = loader.getController();
-        chng.setUser(user);
-        chng.setCheck(1);
-        chng.setR(r);
-
-        stage.show();
-        */
     }
 
     public void setUser(String user)
@@ -103,13 +99,14 @@ public class ChangePassword
         this.user = user;
     }
 
-    public void setCheck(int check)
+    public void setIden(String iden)
     {
-        this.check = check;
+        this.iden = iden;
     }
 
-    public void setR(Receiver r)
+    public void setIndex(int index)
     {
-        this.r = r;
+        this.index = index;
     }
+
 }

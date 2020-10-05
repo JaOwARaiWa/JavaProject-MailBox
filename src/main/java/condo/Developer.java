@@ -13,9 +13,10 @@ public class Developer
 {
     @FXML Button backBtn;
     private String user;
-    private String room;
-    int check;
-    private Receiver r;
+    private String pass;
+    private String iden;
+    private int index;
+    private int check;
 
     @FXML public void initialize()
     {
@@ -24,22 +25,7 @@ public class Developer
 
     @FXML public void handleBackBtnOnAction(ActionEvent event) throws IOException
     {
-        if (check == 1)
-        {
-            Button b = (Button) event.getSource();
-            Stage stage = (Stage) b.getScene().getWindow();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting.fxml"));
-            stage.setScene(new Scene(loader.load(), 800, 600));
-
-            Setting sett = loader.getController();
-            sett.setUser(user);
-            sett.setCheck(check);
-            sett.setR(r);
-
-            stage.show();
-        }
-        else
+        if (check == -1)
         {
             Button b = (Button) event.getSource();
             Stage stage = (Stage) b.getScene().getWindow();
@@ -48,16 +34,24 @@ public class Developer
             stage.setScene(new Scene(loader.load(), 800, 600));
 
             Login in = loader.getController();
-            in.setCheck(-1);
-            in.setR(r);
 
             stage.show();
         }
-    }
+        else
+        {
+            Button b = (Button) event.getSource();
+            Stage stage = (Stage) b.getScene().getWindow();
 
-    public void setUser(String user)
-    {
-        this.user = user;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/setting_roomer.fxml"));
+            stage.setScene(new Scene(loader.load(), 800, 600));
+
+            Setting sett = loader.getController();
+            sett.setUser(user);
+            sett.setIden(iden);
+            sett.setIndex(index);
+
+            stage.show();
+        }
     }
 
     public void setCheck(int check)
@@ -65,8 +59,19 @@ public class Developer
         this.check = check;
     }
 
-    public void setR(Receiver r)
+    public void setUser(String user)
     {
-        this.r = r;
+        this.user = user;
     }
+
+    public void setIden(String iden)
+    {
+        this.iden = iden;
+    }
+
+    public void setIndex(int index)
+    {
+        this.index = index;
+    }
+
 }

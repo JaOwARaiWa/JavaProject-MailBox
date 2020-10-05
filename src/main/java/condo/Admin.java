@@ -1,7 +1,5 @@
 package condo;
 
-import java.util.Scanner;
-
 public class Admin implements Changing
 {
     private String name;
@@ -51,12 +49,5 @@ public class Admin implements Changing
         return "Admin : " + name + " | " + id + "\n";
     }*/
 
-    @Override
-    public void changePassword(String newpass)
-    {
-        if (!newpass.equals(getPassword()))
-        {
-            setPassword(newpass);
-        }
-    }
+
 }

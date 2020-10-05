@@ -1,15 +1,13 @@
 package condo;
 
-import java.util.Scanner;
-
-public class Receiver implements Changing
+public class Roomer implements Changing
 {
     private String name;
     private Address address;
     private String id;
     private String password;
 
-    public Receiver(String name, Address address)
+    public Roomer(String name, Address address)
     {
         this.name = name;
         this.address = address;
@@ -48,12 +46,5 @@ public class Receiver implements Changing
         return "Receiver : " + name + " | " + address + "\n";
     }*/
 
-    @Override
-    public void changePassword(String newpass)
-    {
-        if (!newpass.equals(getPassword()))
-        {
-            setPassword(newpass);
-        }
-    }
+
 }

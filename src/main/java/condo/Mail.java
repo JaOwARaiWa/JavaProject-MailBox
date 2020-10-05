@@ -2,7 +2,7 @@ package condo;
 
 public class Mail
 {
-    private Receiver receiver;
+    private Roomer receiver;
     private Sender sender;
     private String size;
     //picture of this mail
@@ -10,7 +10,7 @@ public class Mail
     private Staff staff; //who receive the mail from the mail man
     private char type;//to check the type of mail (L) is Letter, (D) is Document, (P) is Parcel
 
-    public Mail(Receiver receiver, Sender sender, String size, boolean status)
+    public Mail(Roomer receiver, Sender sender, String size, boolean status)
     {
         this.receiver = receiver;
         this.sender = sender;
@@ -18,7 +18,7 @@ public class Mail
         this.status = status;
     }
 
-    public Receiver getReceiver()
+    public Roomer getReceiver()
     {
         return receiver;
     }

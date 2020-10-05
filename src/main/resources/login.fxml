@@ -50,7 +50,6 @@
                </font>
             </Label>
             <Button fx:id="creditBtn" layoutX="603.0" layoutY="511.0" mnemonicParsing="false" onAction="#handleCreditBtnOnAction" text="Credit" />
-            <Button fx:id="changePassBtn" layoutX="347.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleChangePassBtnOnAction" style="-fx-background-color: none;" text="Change Password" />
          </children>
       </AnchorPane>
    </children>
