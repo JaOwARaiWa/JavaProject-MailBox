@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.StaffMenu">
+<AnchorPane maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.StaffMenu">
    <children>
       <Label layoutY="144.0" prefHeight="100.0" prefWidth="801.0" style="-fx-border-color: black;" />
       <Label layoutX="49.0" layoutY="46.0" prefHeight="50.0" prefWidth="140.0" text="Welcome">

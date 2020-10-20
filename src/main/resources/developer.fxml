@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.Developer">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.Developer">
    <children>
       <Label layoutX="438.0" layoutY="138.0" text="Developed by">
          <font>
@@ -24,9 +24,9 @@
             <Font name="Mitr Medium" size="12.0" />
          </font>
       </Label>
-      <ImageView fitHeight="385.0" fitWidth="216.0" layoutX="145.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageView" fitHeight="385.0" fitWidth="216.0" layoutX="145.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@profile.jpg" />
+            <Image url="profile.jpg" />
          </image>
       </ImageView>
       <Label layoutX="400.0" layoutY="225.0" prefHeight="35.0" prefWidth="280.0" text="นายเกียรติกุล ทองอุดม   เฟริสท์">
