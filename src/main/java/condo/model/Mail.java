@@ -1,20 +1,16 @@
 package condo.model;
 
-import javafx.scene.image.Image;
-
-import java.io.File;
-
 public class Mail
 {
     private Resident receiver;
-    private Sender sender;
+    private String sender;
     private String size;
     private String image;
     private boolean status;
     private Staff staff;
     private char type;
 
-    public Mail(Resident receiver, Sender sender, String size, boolean status)
+    public Mail(Resident receiver, String sender, String size, boolean status)
     {
         this.receiver = receiver;
         this.sender = sender;
@@ -27,7 +23,7 @@ public class Mail
         return receiver;
     }
 
-    public Sender getSender()
+    public String getSender()
     {
         return sender;
     }

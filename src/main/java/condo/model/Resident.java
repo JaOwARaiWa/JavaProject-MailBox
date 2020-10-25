@@ -2,12 +2,12 @@ package condo.model;
 
 public class Resident extends User
 {
-    private Address address;
+    private Room room;
 
-    public Resident(String username, String password, String name, String id, Address address)
+    public Resident(String username, String password, String name, String id, Room room)
     {
         super(username, password, name, id);
-        this.address = address;
+        this.room = room;
     }
 
     public Resident(String username, String password, String name, String id)
@@ -15,13 +15,13 @@ public class Resident extends User
         super(username, password, name, id);
     }
 
-    public void setAddress(Address address)
+    public void setRoom(Room room)
     {
-        this.address = address;
+        this.room = room;
     }
 
-    public Address getAddress()
+    public Room getRoom()
     {
-        return address;
+        return room;
     }
 }

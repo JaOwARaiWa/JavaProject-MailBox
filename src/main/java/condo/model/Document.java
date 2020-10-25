@@ -5,7 +5,7 @@ public class Document extends Mail
     private String priorityMsg;
     private int priorityLv;
 
-    public Document(Resident receiver, Sender sender, boolean status, String size, String priorityMsg, int priorityLv)
+    public Document(Resident receiver, String sender, boolean status, String size, String priorityMsg, int priorityLv)
     {
         super(receiver, sender, size, status);
         this.priorityMsg = priorityMsg;
