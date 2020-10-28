@@ -5,12 +5,11 @@ public class Parcel extends Mail
     private String service;
     private String tracknumber;
 
-
-    public Parcel(Resident receiver, String sender, String size, boolean status, String service, String tracknum)
+    public Parcel(String type, String to, String room, String staff, String sender, String address, String size, String image, String date, String time, String receiver, boolean status, String service, String tracknumber)
     {
-        super(receiver, sender, size, status);
+        super(type, to, room, staff, sender, address, size, image, date, time, receiver, status);
         this.service = service;
-        this.tracknumber = tracknum;
+        this.tracknumber = tracknumber;
     }
 
     public String getService()
@@ -33,9 +32,5 @@ public class Parcel extends Mail
         this.tracknumber = tracknum;
     }
 
-    /*@Override
-    public String toString()
-    {
-        return "Parcel - from : " + getSender() + " to : " + getReceiver() + " " + getReceiver().getAddress() + " (by " + service + " : " + tracknum + ") | size : " + getSize() +  " (" + isStatus() + ")\n";
-    }*/
+
 }

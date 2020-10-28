@@ -6,10 +6,9 @@ import condo.process.ProgramDataSourceFile;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -69,8 +68,8 @@ public class AddResidentController
                     source.updateResidentInRoom(currentRoom);
 
                     popup.setAlertType(Alert.AlertType.INFORMATION);
-                    popup.setTitle("Add resident successful");
-                    popup.setHeaderText("Done");
+                    popup.setTitle("Done");
+                    popup.setHeaderText("Add resident successful");
                     popup.setContentText("You have added " + ownerField.getText() + " and " + resident1Field.getText() + " to room " + currentRoom.getRoom() +
                             "\nPlease press \"Refresh\" button in Room list page");
                     popup.showAndWait();
@@ -84,9 +83,10 @@ public class AddResidentController
         {
             if (currentRoom.getAllResident().size() == 4 && !currentRoom.getOwner().equals("None") && !currentRoom.getResident1().equals("None")&& !currentRoom.getResident2().equals("None") && !currentRoom.getResident3().equals("None"))
             {
+                popup.setAlertType(Alert.AlertType.ERROR);
                 popup.setTitle("Adding failed");
                 popup.setHeaderText("Not available!");
-                popup.setContentText("This room is full can't add more resident");
+                popup.setContentText("This room is full, can't add more resident");
                 popup.showAndWait();
 
                 ownerField.setText("");
@@ -113,11 +113,16 @@ public class AddResidentController
                     source.updateResidentInRoom(currentRoom);
 
                     popup.setAlertType(Alert.AlertType.INFORMATION);
-                    popup.setTitle("Add resident successful");
-                    popup.setHeaderText("Done");
+                    popup.setTitle("Done");
+                    popup.setHeaderText("Add resident successful");
                     popup.setContentText("You have added " + ownerField.getText()+ ", " + resident1Field.getText() + ", " + resident2Field.getText() + ", and " + resident3Field.getText() + " to room " + currentRoom.getRoom() +
                             "\nPlease press \"Refresh\" button in Room list page");
                     popup.showAndWait();
+
+                    Button b = (Button) event.getSource();
+                    Stage stage = (Stage) b.getScene().getWindow();
+                    stage.close();
+
 
                     ownerField.setText("");
                     resident1Field.setText("");
@@ -126,8 +131,6 @@ public class AddResidentController
                 }
             }
         }
-
-
     }
 
     public void setCurrentRoom(Room currentRoom)

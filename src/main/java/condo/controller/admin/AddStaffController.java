@@ -38,8 +38,8 @@ public class AddStaffController
             !confirmField.getText().equals(passwordField.getText()))
         {
             popup.setAlertType(Alert.AlertType.ERROR);
-            popup.setTitle("Creating failed");
-            popup.setHeaderText("Failed");
+            popup.setTitle("Failed");
+            popup.setHeaderText("Creating failed");
             popup.setContentText("Please fill all the field or check your password");
             popup.showAndWait();
         }
@@ -65,15 +65,15 @@ public class AddStaffController
                 {
                     programDataSource.writeNewStaff(newAccount);
                     popup.setAlertType(Alert.AlertType.NONE);
-                    popup.setTitle("Creating successful");
-                    popup.setHeaderText("Successful");
+                    popup.setTitle("Successful");
+                    popup.setHeaderText("Creating successful");
                     popup.setContentText("You have created " + newAccount.get(2) + " a staff");
                 }
                 else
                 {
                     popup.setAlertType(Alert.AlertType.ERROR);
-                    popup.setTitle("Creating failed");
-                    popup.setHeaderText("Failed");
+                    popup.setTitle("Failed");
+                    popup.setHeaderText("Creating failed");
                     popup.setContentText(newAccount.get(0) + " is already used, please change the username");
 
                 }

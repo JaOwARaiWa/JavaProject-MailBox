@@ -11,40 +11,40 @@
         <Label layoutX="251.0" layoutY="100.0" prefHeight="400.0" prefWidth="300.0" style="-fx-border-color: black;" />
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="297.0" layoutY="119.0" prefHeight="50.0" prefWidth="206.0" text="Add Room">
             <font>
-                <Font name="Mitr Medium" size="30.0" />
+                <Font name="Arial Rounded MT Bold" size="30.0" />
             </font>
         </Label>
       <ChoiceBox fx:id="buildingBox" layoutX="420.0" layoutY="200.0" prefHeight="25.0" prefWidth="100.0" />
       <ChoiceBox fx:id="floorBox" layoutX="420.0" layoutY="260.0" prefHeight="25.0" prefWidth="100.0" />
       <ChoiceBox fx:id="typeBox" layoutX="420.0" layoutY="320.0" prefHeight="25.0" prefWidth="100.0" />
-      <Button fx:id="addBtn" layoutX="380.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleAddRoomBtnOnAction" text="Add">
+      <Button fx:id="addBtn" defaultButton="true" layoutX="375.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleAddRoomBtnOnAction" prefHeight="30.0" prefWidth="50.0" text="Add">
          <font>
-            <Font name="Mitr Medium" size="12.0" />
+            <Font name="Arial Rounded MT Bold" size="12.0" />
          </font></Button>
       <Label layoutX="280.0" layoutY="200.0" prefHeight="30.0" prefWidth="90.0" text="Building">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <Label layoutX="280.0" layoutY="260.0" prefHeight="30.0" prefWidth="90.0" text="Floor">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <Label layoutX="280.0" layoutY="320.0" prefHeight="30.0" prefWidth="90.0" text="Type">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <ChoiceBox fx:id="roomBox" layoutX="420.0" layoutY="380.0" prefHeight="25.0" prefWidth="100.0" />
       <Label layoutX="280.0" layoutY="380.0" prefHeight="30.0" prefWidth="90.0" text="Room">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <Button fx:id="backBtn" layoutX="377.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleBackBtnOnAction" text="Back">
          <font>
-            <Font name="Mitr Medium" size="12.0" />
+            <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Button>
     </children>

@@ -37,19 +37,12 @@ public class RoomListController
     {
         residentList = FXCollections.observableArrayList(source.showResidentRoom());
         buildingCol.setCellValueFactory(new PropertyValueFactory<Room, String>("Building"));
-        residentTable.setItems(residentList);
         floorCol.setCellValueFactory(new PropertyValueFactory<Room, String>("Floor"));
-        residentTable.setItems(residentList);
         typeCol.setCellValueFactory(new PropertyValueFactory<Room, String>("Type"));
-        residentTable.setItems(residentList);
         roomNumCol.setCellValueFactory(new PropertyValueFactory<Room, String>("RoomNumber"));
-        residentTable.setItems(residentList);
         ownerCol.setCellValueFactory(new PropertyValueFactory<Room, String>("Owner"));
-        residentTable.setItems(residentList);
         res1Col.setCellValueFactory(new PropertyValueFactory<Room, String>("Resident1"));
-        residentTable.setItems(residentList);
         res2Col.setCellValueFactory(new PropertyValueFactory<Room, String>("Resident2"));
-        residentTable.setItems(residentList);
         res3Col.setCellValueFactory(new PropertyValueFactory<Room, String>("Resident3"));
         residentTable.setItems(residentList);
 

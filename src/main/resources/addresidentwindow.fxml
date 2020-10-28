@@ -10,42 +10,42 @@
    <children>
       <Button fx:id="addBtn" defaultButton="true" layoutX="175.0" layoutY="430.0" mnemonicParsing="false" onAction="#handleAddBtnOnAction" prefHeight="30.0" prefWidth="50.0" text="Add">
          <font>
-            <Font name="Mitr Medium" size="12.0" />
+            <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Button>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="32.0" prefHeight="50.0" prefWidth="210.0" text="Add Resident" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="30.0" />
+            <Font name="Arial Rounded MT Bold" size="30.0" />
          </font>
       </Label>
       <Label layoutX="50.0" layoutY="150.0" text="Type">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <Label layoutX="50.0" layoutY="350.0" text="Resident 3">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <Label layoutX="50.0" layoutY="200.0" text="Owner">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <Label layoutX="50.0" layoutY="250.0" text="Resident 1">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <Label layoutX="50.0" layoutY="300.0" text="Resident 2">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <Label fx:id="typeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="151.0" prefHeight="30.0" prefWidth="150.0" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font></Label>
       <TextField fx:id="ownerField" layoutX="201.0" layoutY="201.0" />
       <TextField fx:id="resident1Field" layoutX="201.0" layoutY="251.0" />
@@ -53,12 +53,12 @@
       <TextField fx:id="resident3Field" layoutX="201.0" layoutY="351.0" />
       <Label layoutX="50.0" layoutY="100.0" text="Room">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <Label fx:id="roomLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="101.0" prefHeight="30.0" prefWidth="150.0" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="15.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
    </children>

@@ -164,4 +164,6 @@ public class Room
         //this.resident.clear();
         this.room = null;
     }
+
+
 }

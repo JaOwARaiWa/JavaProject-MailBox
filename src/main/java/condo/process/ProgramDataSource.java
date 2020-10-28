@@ -1,5 +1,6 @@
 package condo.process;
 
+import condo.model.Mail;
 import condo.model.Room;
 import condo.model.Staff;
 import condo.model.User;
@@ -23,5 +24,11 @@ public interface ProgramDataSource
     boolean addNewRoom(Room newRoom) throws IOException;
     ArrayList<Room> showResidentRoom() throws IOException;
     void updateResidentInRoom(Room currentRoom) throws IOException;
+    boolean checkRoomAndOwner(String thisRoom) throws IOException;
+    void addMail(Mail newMail) throws IOException;
+    ArrayList<Mail> readMail() throws IOException;
+    ArrayList<Mail> readHistory() throws IOException;
+    void pickUpMail(Mail currentMail) throws IOException;
+    void updateMail(Mail currentMail) throws IOException;
 
 }

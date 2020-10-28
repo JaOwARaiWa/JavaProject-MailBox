@@ -3,49 +3,100 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.staff.AddRoomController">
+<AnchorPane maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.staff.AddMailController">
     <children>
-        <Label layoutX="251.0" layoutY="100.0" prefHeight="400.0" prefWidth="300.0" style="-fx-border-color: black;" />
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="297.0" layoutY="119.0" prefHeight="50.0" prefWidth="206.0" text="Add Room">
+        <Label layoutX="50.0" layoutY="-2.0" prefHeight="610.0" prefWidth="700.0" />
+      <Label layoutX="465.0" layoutY="100.0" prefHeight="200.0" prefWidth="250.0" style="-fx-border-color: black;" />
+      <Label layoutX="465.0" layoutY="300.0" prefHeight="200.0" prefWidth="250.0" style="-fx-border-color: black;" />
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="185.0" layoutY="14.0" prefHeight="50.0" prefWidth="430.0" text="Add Mail ">
             <font>
-                <Font name="Mitr Medium" size="30.0" />
+                <Font name="Arial Rounded MT Bold" size="50.0" />
             </font>
         </Label>
-      <ChoiceBox fx:id="buildingBox" layoutX="420.0" layoutY="200.0" prefHeight="25.0" prefWidth="100.0" />
-      <ChoiceBox fx:id="floorBox" layoutX="420.0" layoutY="260.0" prefHeight="25.0" prefWidth="100.0" />
-      <ChoiceBox fx:id="typeBox" layoutX="420.0" layoutY="320.0" prefHeight="25.0" prefWidth="100.0" />
-      <Button fx:id="addBtn" layoutX="380.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleAddRoomBtnOnAction" text="Add">
+      <ChoiceBox fx:id="typeBox" layoutX="225.0" layoutY="103.0" prefHeight="25.0" prefWidth="100.0" />
+      <ChoiceBox fx:id="sizeBox" layoutX="225.0" layoutY="153.0" prefHeight="25.0" prefWidth="100.0" />
+      <TextField fx:id="priorityField" layoutX="221.0" layoutY="203.0" />
+      <TextField fx:id="serviceField" layoutX="221.0" layoutY="253.0" />
+      <TextField fx:id="trackNumField" layoutX="221.0" layoutY="303.0" />
+      <TextField fx:id="senderField" layoutX="514.0" layoutY="180.0" />
+      <TextField fx:id="addressField" layoutX="514.0" layoutY="250.0" />
+      <TextField fx:id="residentField" layoutX="515.0" layoutY="385.0" />
+      <TextField fx:id="roomField" layoutX="515.0" layoutY="455.0" />
+      <Button fx:id="upLoadPhotoBtn" layoutX="171.0" layoutY="544.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Upload photo">
          <font>
-            <Font name="Mitr Medium" size="12.0" />
-         </font></Button>
-      <Label layoutX="280.0" layoutY="200.0" prefHeight="30.0" prefWidth="90.0" text="Building">
-         <font>
-            <Font name="Mitr Medium" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="280.0" layoutY="260.0" prefHeight="30.0" prefWidth="90.0" text="Floor">
-         <font>
-            <Font name="Mitr Medium" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="280.0" layoutY="320.0" prefHeight="30.0" prefWidth="90.0" text="Type">
-         <font>
-            <Font name="Mitr Medium" size="15.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="roomBox" layoutX="420.0" layoutY="380.0" prefHeight="25.0" prefWidth="100.0" />
-      <Label layoutX="280.0" layoutY="380.0" prefHeight="30.0" prefWidth="90.0" text="Room">
-         <font>
-            <Font name="Mitr Medium" size="15.0" />
-         </font>
-      </Label>
-      <Button fx:id="backBtn" layoutX="377.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleBackBtnOnAction" text="Back">
-         <font>
-            <Font name="Mitr Medium" size="12.0" />
+            <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Button>
+      <Button fx:id="addMailBtn" layoutX="375.0" layoutY="529.0" mnemonicParsing="false" onAction="#handleAddMailBtnOnAction" prefHeight="30.0" prefWidth="50.0" text="Add">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="cancelBtn" layoutX="570.0" layoutY="544.0" mnemonicParsing="false" onAction="#handleCancelBtnOnAction" prefHeight="30.0" prefWidth="65.0" text="Cancel">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="480.0" layoutY="315.0" prefHeight="30.0" prefWidth="90.0" text="To :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="480.0" layoutY="145.0" prefHeight="30.0" prefWidth="90.0" text="Sender's name">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="100.0" prefHeight="30.0" prefWidth="90.0" text="Type">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="480.0" layoutY="350.0" prefHeight="30.0" prefWidth="122.0" text="Receiver's name">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="150.0" prefHeight="30.0" prefWidth="90.0" text="Size">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="125.0" layoutY="360.0" prefHeight="150.0" prefWidth="200.0" text="show image" />
+      <ImageView fx:id="mailImage" fitHeight="200.0" fitWidth="250.0" layoutX="100.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="480.0" layoutY="215.0" prefHeight="30.0" prefWidth="90.0" text="Address">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="480.0" layoutY="110.0" prefHeight="30.0" prefWidth="90.0" text="From :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="480.0" layoutY="420.0" prefHeight="30.0" prefWidth="90.0" text="Room">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="200.0" prefHeight="30.0" prefWidth="90.0" text="Priority">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="250.0" prefHeight="30.0" prefWidth="90.0" text="Service">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="300.0" prefHeight="30.0" prefWidth="136.0" text="Tracking number">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

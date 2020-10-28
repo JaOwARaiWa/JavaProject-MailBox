@@ -10,19 +10,22 @@
 <AnchorPane maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.resident.ResidentMenuController">
    <children>
       <Label layoutY="144.0" prefHeight="100.0" prefWidth="801.0" style="-fx-border-color: black;" />
-      <Label layoutX="49.0" layoutY="46.0" prefHeight="50.0" prefWidth="140.0" text="Welcome">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="46.0" prefHeight="50.0" prefWidth="140.0" text="Welcome" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="30.0" />
+            <Font name="Arial Rounded MT Bold" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="signOutBtn" layoutX="680.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleSignOutBtnOnAction" style="-fx-background-color: none;" text="Sign out" />
+      <Button fx:id="signOutBtn" layoutX="680.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleSignOutBtnOnAction" style="-fx-background-color: none;" text="Sign out">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Button>
       <Label fx:id="roomLabel" alignment="CENTER" layoutX="460.0" layoutY="47.0" prefHeight="50.0" prefWidth="140.0" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="20.0" />
          </font></Label>
       <Label fx:id="userLabel" alignment="CENTER" layoutX="222.0" layoutY="47.0" prefHeight="50.0" prefWidth="140.0" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="20.0" />
          </font></Label>
       <TableView layoutX="74.0" layoutY="282.0" prefHeight="283.0" prefWidth="654.0">
         <columns>
@@ -32,24 +35,19 @@
             <TableColumn prefWidth="164.0" text="Status" />
         </columns>
       </TableView>
-      <Button fx:id="backBtn" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: none;" text="&lt;---">
+      <Button fx:id="letterOnlyBtn" layoutX="137.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" text="Letter Only">
          <font>
-            <Font name="Mitr Medium" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="letterOnlyBtn" layoutX="100.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" text="Letter Only">
+      <Button fx:id="docOnlyBtn" layoutX="292.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" text="Document Only">
          <font>
-            <Font name="Mitr Medium" size="12.0" />
+            <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="docOnlyBtn" layoutX="250.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" text="Document Only">
+      <Button fx:id="parcelOnlyBtn" layoutX="460.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" text="Parcel Only">
          <font>
-            <Font name="Mitr Medium" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="parcelOnlyBtn" layoutX="400.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" text="Parcel Only">
-         <font>
-            <Font name="Mitr Medium" size="12.0" />
+            <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Button>
    </children>

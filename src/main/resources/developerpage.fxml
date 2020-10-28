@@ -8,14 +8,14 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.DeveloperController">
    <children>
-      <Label layoutX="438.0" layoutY="138.0" text="Developed by">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="441.0" layoutY="162.0" text="Developed by" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="30.0" />
+            <Font name="Arial Rounded MT Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="235.0" layoutY="56.0" text="The Elite Box">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="235.0" layoutY="56.0" text="The Elite Box" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="50.0" />
+            <Font name="Arial Rounded MT Bold" size="50.0" />
          </font>
       </Label>
       <Label layoutX="142.0" layoutY="162.0" prefHeight="366.0" prefWidth="222.0" style="-fx-background-color: black;" text="Profile" textAlignment="CENTER">
@@ -25,20 +25,23 @@
       </Label>
       <ImageView fx:id="imageView" fitHeight="385.0" fitWidth="216.0" layoutX="145.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
-      <Label layoutX="400.0" layoutY="225.0" prefHeight="35.0" prefWidth="280.0" text="นายเกียรติกุล ทองอุดม   เฟริสท์">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="400.0" layoutY="225.0" prefHeight="35.0" prefWidth="280.0" text="นายเกียรติกุล ทองอุดม   เฟริสท์" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="400.0" layoutY="280.0" prefHeight="35.0" prefWidth="280.0" text="Kiattikun Thongudom   First">
+      <Label alignment="CENTER" layoutX="400.0" layoutY="280.0" prefHeight="35.0" prefWidth="280.0" text="Kiattikun Thongudom   First">
          <font>
-            <Font name="Mitr Medium" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" layoutX="520.0" layoutY="465.0" mnemonicParsing="false" onAction="#handleBackBtnOnAction" text="Back" />
-      <Label layoutX="400.0" layoutY="335.0" prefHeight="35.0" prefWidth="280.0" text="6210450032">
+      <Button fx:id="backBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="518.0" layoutY="505.0" mnemonicParsing="false" onAction="#handleBackBtnOnAction" prefHeight="40.0" prefWidth="50.0" text="Back" textAlignment="CENTER">
          <font>
-            <Font name="Mitr Medium" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="400.0" layoutY="335.0" prefHeight="35.0" prefWidth="280.0" text="6210450032" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
       </Label>
    </children>

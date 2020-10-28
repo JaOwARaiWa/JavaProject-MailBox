@@ -2,29 +2,21 @@ package condo.model;
 
 public class Document extends Mail
 {
-    private String priorityMsg;
-    private int priorityLv;
+    private String priority;
 
-    public Document(Resident receiver, String sender, boolean status, String size, String priorityMsg, int priorityLv)
+    public Document(String type, String to, String room, String staff, String sender, String address, String size, String image, String date, String time, String receiver, boolean status, String priority)
     {
-        super(receiver, sender, size, status);
-        this.priorityMsg = priorityMsg;
-        this.priorityLv = priorityLv;
+        super(type, to, room, staff, sender, address, size, image, date, time, receiver, status);
+        this.priority = priority;
     }
 
-    public String getPriorityMsg()
+    public String getPriority()
     {
-        return priorityMsg;
+        return priority;
     }
 
-    public int getPriorityLv()
+    public void setPriority(String priority)
     {
-        return priorityLv;
+        this.priority = priority;
     }
-
-    /*@Override
-    public String toString()
-    {
-        return "Document - from : " + getSender() + " to : " + getReceiver() + " " + getReceiver().getAddress() + " | size : " + getSize() + " [" + priorityMsg + "] (" + isStatus() + ")\n";
-    }*/
 }

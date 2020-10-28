@@ -90,9 +90,9 @@ public class AddRoomController
                 roomBox.getValue() == null)
         {
             popup.setAlertType(Alert.AlertType.ERROR);
-            popup.setTitle("Can't add this room");
-            popup.setHeaderText("Failed");
-            popup.setContentText("Please choose all the box or fill the field");
+            popup.setTitle("Failed");
+            popup.setHeaderText("Can't add this room");
+            popup.setContentText("Please choose all the box or fill the information");
             popup.showAndWait();
         }
         else
@@ -114,15 +114,15 @@ public class AddRoomController
                 if (source.addNewRoom(newRoom))
                 {
                     popup.setAlertType(Alert.AlertType.NONE);
-                    popup.setTitle("Adding successful");
-                    popup.setHeaderText("Successful");
+                    popup.setTitle("Successful");
+                    popup.setHeaderText("Adding successful");
                     popup.setContentText("You have add room " + newRoom.getRoom());
                 }
                 else
                 {
                     popup.setAlertType(Alert.AlertType.ERROR);
-                    popup.setTitle("Adding failed");
-                    popup.setHeaderText("Failed");
+                    popup.setTitle("Failed");
+                    popup.setHeaderText("Adding failed");
                     popup.setContentText(newRoom.getRoom() + " is not available, please change the room");
                 }
                 popup.showAndWait();
