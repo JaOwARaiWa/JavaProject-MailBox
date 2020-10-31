@@ -1,6 +1,7 @@
 package condo.controller;
 
 import condo.controller.admin.AdminMenuController;
+import condo.controller.resident.RegisterController;
 import condo.controller.resident.ResidentMenuController;
 import condo.controller.staff.StaffMenuController;
 import condo.model.*;
@@ -10,10 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,6 +24,7 @@ public class LoginController
     @FXML Label faultLabel;
     @FXML TextField usernameField;
     @FXML PasswordField passwordField;
+    @FXML ImageView backGround;
 
     private User currentUser;
 
@@ -36,11 +36,13 @@ public class LoginController
     private ArrayList<String> usernameList = new ArrayList<>();
     private ArrayList<String> passwordList = new ArrayList<>();
     private ArrayList<String> nameList = new ArrayList<>();
+    private ArrayList<String> roomList = new ArrayList<>();
 
     private int i = 0;
     private int index = 0;
     private int limit = 0;
     private int fault = 0;
+    private Alert popup = new Alert(Alert.AlertType.NONE);
 
     private ProgramDataSource programDataSource = new ProgramDataSourceFile();
 
@@ -51,6 +53,7 @@ public class LoginController
         usernameList = (ArrayList<String>) acc.get(1);
         passwordList = (ArrayList<String>) acc.get(2);
         nameList = (ArrayList<String>) acc.get(3);
+        roomList = (ArrayList<String>) acc.get(4);
 
         limit = idList.size();
     }
@@ -80,7 +83,7 @@ public class LoginController
                         fault = -1;
                         break;
                     case "RESIDENT":
-                        currentUser = new Resident(usernameList.get(i), passwordList.get(i), nameList.get(i), idList.get(i));
+                        currentUser = new Resident(usernameList.get(i), passwordList.get(i), nameList.get(i), idList.get(i), roomList.get(i));
                         index = i;
                         fault = -1;
                         break;
@@ -137,18 +140,35 @@ public class LoginController
                 stage.setScene(new Scene(loader.load(), 800, 600));
 
                 ResidentMenuController menu = loader.getController();
-                menu.setCurrentuser(currentUser);
+                menu.setCurrentUser((Resident) currentUser);
 
                 stage.show();
                 break;
             }
             default:
+                popup.setAlertType(Alert.AlertType.ERROR);
+                popup.setTitle("Login failed");
+                popup.setHeaderText("Wrong user or password, please try again");
+                popup.setContentText("Please check your username amd password");
+                popup.showAndWait();
                 faultLabel.setText("Wrong user or password, please try again");
                 currentUser.reset();
                 usernameField.setText("");
                 passwordField.setText("");
                 break;
         }
+    }
+
+    @FXML public void handleRegisterBtnOnAction(ActionEvent event) throws IOException
+    {
+        Stage stage = new Stage();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/registerwindow.fxml"));
+        stage.setScene(new Scene(loader.load(), 500, 500));
+
+        RegisterController rgct = loader.getController();
+
+        stage.show();
     }
 
     @FXML public void handleCreditBtnOnAction(ActionEvent event) throws IOException

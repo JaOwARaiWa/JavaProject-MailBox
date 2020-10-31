@@ -8,7 +8,8 @@ public class MainProgramCondo extends Application
 {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception
+    {
         Parent root = FXMLLoader.load(getClass().getResource("/loginpage.fxml"));
         primaryStage.setTitle("6210450032");
         primaryStage.setScene(new Scene(root, 800, 600));

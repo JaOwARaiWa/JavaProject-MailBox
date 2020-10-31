@@ -18,9 +18,9 @@ public class Mail
 
     private String receiver;
 
-    private boolean status;
+    private String status;
 
-    public Mail(String type, String to, String room, String staff, String sender, String address, String size, String image, String date, String time, String receiver, boolean status)
+    public Mail(String type, String to, String room, String staff, String sender, String address, String size, String image, String date, String time, String receiver, String status)
     {
         this.type = type;
         this.to = to;
@@ -91,21 +91,9 @@ public class Mail
         return receiver;
     }
 
-    public boolean isStatus()
-    {
-        return status;
-    }
-
     public String getStatus()
     {
-        if (isStatus())
-        {
-            return "in stock";
-        }
-        else
-        {
-            return "picked up";
-        }
+        return status;
     }
 
     /*-----------------------------------------------------------------------------------------------------*/
@@ -165,7 +153,7 @@ public class Mail
         this.receiver = receiver;
     }
 
-    public void setStatus(boolean status)
+    public void setStatus(String status)
     {
         this.status = status;
     }

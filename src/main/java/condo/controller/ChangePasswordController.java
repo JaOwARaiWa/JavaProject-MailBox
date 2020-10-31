@@ -3,6 +3,7 @@ package condo.controller;
 import condo.controller.admin.AdminMenuController;
 import condo.controller.resident.ResidentMenuController;
 import condo.controller.staff.StaffMenuController;
+import condo.model.Resident;
 import condo.model.Staff;
 import condo.model.User;
 import condo.process.ProgramDataSource;
@@ -12,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -29,16 +31,11 @@ public class ChangePasswordController
     private String newPass;
     private String confirm;
     private ProgramDataSource programDataSource = new ProgramDataSourceFile();
+    private Alert popup = new Alert(Alert.AlertType.NONE);
 
     @FXML public void initialize()
     {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run()
-            {
-                usernameLabel.setText(currentuser.getUsername());
-            }
-        });
+        Platform.runLater(() -> usernameLabel.setText(currentuser.getUsername()));
     }
 
     @FXML public void handleBackBtnOnAction(ActionEvent event) throws IOException
@@ -78,7 +75,7 @@ public class ChangePasswordController
             stage.setScene(new Scene(loader.load(), 800, 600));
 
             ResidentMenuController menu = loader.getController();
-            menu.setCurrentuser(currentuser);
+            menu.setCurrentUser((Resident) currentuser);
 
             stage.show();
         }
@@ -97,12 +94,29 @@ public class ChangePasswordController
         if (oldPass.equals(currentuser.getPassword()) && newPass.equals(confirm))
         {
             programDataSource.changePass(currentuser, newPass);
+            popup.setAlertType(Alert.AlertType.INFORMATION);
+            popup.setTitle("Done");
+            popup.setHeaderText("Your password has changed");
             progressLabel.setText("Your password has changed");
+            popup.showAndWait();
+
+            oldPassField.setText("");
+            newPassField.setText("");
+            confirmField.setText("");
         }
         else
         {
-            progressLabel.setText("Wrong user or mismatch confirm password, please try again");
+            popup.setAlertType(Alert.AlertType.ERROR);
+            popup.setTitle("Failed");
+            popup.setHeaderText("Can't change your password");
+            popup.setContentText("Please check your password or fill all the information");
+            popup.showAndWait();
+            progressLabel.setText("Please try again");
+            oldPassField.setText("");
+            newPassField.setText("");
+            confirmField.setText("");
         }
+        popup.setAlertType(Alert.AlertType.NONE);
     }
 
     public void setCurrentuser(User currentuser)

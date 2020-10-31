@@ -1,6 +1,5 @@
 package condo.controller;
 
-import condo.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +18,7 @@ public class DeveloperController
 
     @FXML public void initialize()
     {
-        Image image = new Image("/profile.jpg");
+        Image image = new Image("/pictures/profile.jpg");
         imageView.setImage(image);
     }
 

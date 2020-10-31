@@ -5,7 +5,7 @@ public class Parcel extends Mail
     private String service;
     private String tracknumber;
 
-    public Parcel(String type, String to, String room, String staff, String sender, String address, String size, String image, String date, String time, String receiver, boolean status, String service, String tracknumber)
+    public Parcel(String type, String to, String room, String staff, String sender, String address, String size, String image, String date, String time, String receiver, String status, String service, String tracknumber)
     {
         super(type, to, room, staff, sender, address, size, image, date, time, receiver, status);
         this.service = service;

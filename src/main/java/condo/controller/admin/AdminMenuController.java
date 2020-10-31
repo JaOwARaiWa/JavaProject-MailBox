@@ -37,7 +37,7 @@ public class AdminMenuController
 
     @FXML public void initialize() throws IOException
     {
-        staffList = FXCollections.observableArrayList(programDataSource.showStaffHistory());
+        staffList = FXCollections.observableArrayList(programDataSource.readStaffAccount());
         userCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("Username"));
         staffTable.setItems(staffList);
         nameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("Name"));

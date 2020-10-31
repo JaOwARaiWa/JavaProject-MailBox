@@ -182,13 +182,13 @@ public class AddMailController
                 switch (type)
                 {
                     case "Letter":
-                        mail = new Letter(type, resident, room, staff, sender, address, size, image, date, time, "-",true);
+                        mail = new Letter(type, resident, room, staff, sender, address, size, image, date, time, "-", "in stock");
                         break;
                     case "Document":
-                        mail = new Document(type, resident, room, staff, sender, address, size, image, date, time, "-", true, priority);
+                        mail = new Document(type, resident, room, staff, sender, address, size, image, date, time, "-", "in stock", priority);
                         break;
                     case "Parcel":
-                        mail = new Parcel(type, resident, room, staff, sender, address, size, image, date, time, "-" ,true, service, trackNum);
+                        mail = new Parcel(type, resident, room, staff, sender, address, size, image, date, time, "-" ,"in stock", service, trackNum);
                         break;
                 }
 

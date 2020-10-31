@@ -4,14 +4,18 @@ import condo.model.Room;
 import condo.process.ProgramDataSource;
 import condo.process.ProgramDataSourceFile;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class AddResidentController
 {
@@ -112,17 +116,16 @@ public class AddResidentController
                     currentRoom.setResident(resident);
                     source.updateResidentInRoom(currentRoom);
 
+                    Button b = (Button) event.getSource();
+                    Stage stage = (Stage) b.getScene().getWindow();
+                    stage.close();
+
                     popup.setAlertType(Alert.AlertType.INFORMATION);
                     popup.setTitle("Done");
                     popup.setHeaderText("Add resident successful");
                     popup.setContentText("You have added " + ownerField.getText()+ ", " + resident1Field.getText() + ", " + resident2Field.getText() + ", and " + resident3Field.getText() + " to room " + currentRoom.getRoom() +
                             "\nPlease press \"Refresh\" button in Room list page");
                     popup.showAndWait();
-
-                    Button b = (Button) event.getSource();
-                    Stage stage = (Stage) b.getScene().getWindow();
-                    stage.close();
-
 
                     ownerField.setText("");
                     resident1Field.setText("");

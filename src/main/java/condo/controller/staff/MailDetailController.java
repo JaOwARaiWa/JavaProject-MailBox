@@ -47,6 +47,20 @@ public class MailDetailController
             timeLabel.setText(currentMail.getTime());
             sizeLabel.setText(currentMail.getSize());
 
+            if (currentUser != null)
+            {
+                if (!currentUser.getId().equals("STAFF"))
+                {
+                    pickUpBtn.setDisable(true);
+                    receiverField.setDisable(true);
+                }
+                else
+                {
+                    pickUpBtn.setDisable(false);
+                    receiverField.setDisable(false);
+                }
+            }
+
             if (currentMail.getType().equals("Document"))
             {
                 dynamicLabel.setText("Priority : ");
@@ -69,21 +83,14 @@ public class MailDetailController
                 receiverField.setVisible(false);
                 receiverNameLabel.setText(currentMail.getReceiver());
             }
-
-
         });
-
-
     }
 
     @FXML public void handlePickUpBtnOnAction(ActionEvent event) throws IOException
     {
-        source.updateMail(currentMail);
-
-        currentMail.setDate(LocalDate.now().toString());
-        currentMail.setTime(LocalTime.now().toString());
         currentMail.setStaff(currentUser.getName());
         currentMail.setReceiver(receiverField.getText());
+        currentMail.setStatus("picked up");
 
         source.pickUpMail(currentMail);
 

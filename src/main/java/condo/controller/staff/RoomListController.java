@@ -11,10 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -35,7 +32,7 @@ public class RoomListController
 
     @FXML public void initialize() throws IOException
     {
-        residentList = FXCollections.observableArrayList(source.showResidentRoom());
+        residentList = FXCollections.observableArrayList(source.readCondoRoom());
         buildingCol.setCellValueFactory(new PropertyValueFactory<Room, String>("Building"));
         floorCol.setCellValueFactory(new PropertyValueFactory<Room, String>("Floor"));
         typeCol.setCellValueFactory(new PropertyValueFactory<Room, String>("Type"));
@@ -71,7 +68,7 @@ public class RoomListController
 
     @FXML public void handleRefreshBtnOnAction(ActionEvent event) throws IOException
     {
-        ObservableList refreshList = FXCollections.observableArrayList(source.showResidentRoom());
+        ObservableList refreshList = FXCollections.observableArrayList(source.readCondoRoom());
         residentTable.setItems(refreshList);
         residentTable.refresh();
     }
@@ -115,4 +112,5 @@ public class RoomListController
     {
         this.currentUser = currentUser;
     }
+
 }

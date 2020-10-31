@@ -1,5 +1,6 @@
 package condo.controller.admin;
 
+import condo.model.Staff;
 import condo.model.User;
 import condo.process.ProgramDataSource;
 import condo.process.ProgramDataSourceFile;
@@ -21,7 +22,8 @@ public class AddStaffController
     private Alert popup = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
     private User currentuser;
     private ProgramDataSource programDataSource = new ProgramDataSourceFile();
-    private ArrayList<String> newAccount = new ArrayList<>();
+    private Staff newStaff;
+    private Staff writeInAcc;
 
     @FXML public void initialize()
     {
@@ -54,27 +56,24 @@ public class AddStaffController
 
             if (popup.getResult() == ButtonType.YES)
             {
-                newAccount.add(usernameField.getText());
-                newAccount.add(passwordField.getText());
-                newAccount.add(nameField.getText());
-                newAccount.add(surnameField.getText());
-                newAccount.add("None");
-                newAccount.add("None");
+                newStaff = new Staff(usernameField.getText(), passwordField.getText(), nameField.getText(), surnameField.getText(), "None", "None");
 
-                if (programDataSource.addStaff(newAccount))
+                if (programDataSource.addStaff(newStaff))
                 {
-                    programDataSource.writeNewStaff(newAccount);
+                    writeInAcc = new Staff(usernameField.getText(), passwordField.getText(), nameField.getText(), "STAFF");
+
+                    programDataSource.writeNewStaff(writeInAcc);
                     popup.setAlertType(Alert.AlertType.NONE);
                     popup.setTitle("Successful");
                     popup.setHeaderText("Creating successful");
-                    popup.setContentText("You have created " + newAccount.get(2) + " a staff");
+                    popup.setContentText("You have created " + newStaff.getName() + " a staff");
                 }
                 else
                 {
                     popup.setAlertType(Alert.AlertType.ERROR);
                     popup.setTitle("Failed");
                     popup.setHeaderText("Creating failed");
-                    popup.setContentText(newAccount.get(0) + " is already used, please change the username");
+                    popup.setContentText(newStaff.getId() + " is already used, please change the username");
 
                 }
                 popup.showAndWait();
@@ -83,10 +82,6 @@ public class AddStaffController
                 usernameField.setText("");
                 passwordField.setText("");
                 confirmField.setText("");
-                while (newAccount.size() != 0)
-                {
-                    newAccount.remove(0);
-                }
             }
         }
         popup.setAlertType(Alert.AlertType.CONFIRMATION);

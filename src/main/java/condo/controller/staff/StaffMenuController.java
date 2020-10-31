@@ -27,6 +27,7 @@ public class StaffMenuController
     @FXML Label idLabel, nameLabel;
     @FXML TableColumn typeCol, roomCol, senderCol, dateCol, timeCol, staffCol, statusCol;
     @FXML TableView mailTable;
+    @FXML TextField searchField;
 
     private User currentUser;
     private Mail currentMail;
@@ -40,15 +41,7 @@ public class StaffMenuController
             nameLabel.setText(currentUser.getName());
         });
 
-        mailList = FXCollections.observableArrayList(source.readMail());
-        typeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Type"));
-        senderCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Sender"));
-        roomCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Room"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Date"));
-        timeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Time"));
-        staffCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Staff"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Status"));
-        mailTable.setItems(mailList);
+        showMailTable();
 
         mailTable.setRowFactory( table ->
         {
@@ -72,10 +65,27 @@ public class StaffMenuController
             return row;
         });
 
+        /*searchField.textProperty().addListener((observable, before, after) ->
+        {
+            if (after != null)
+            {
 
+            }
+        });*/
     }
 
-
+    public void showMailTable() throws IOException
+    {
+        mailList = FXCollections.observableArrayList(source.readMail("in stock"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Type"));
+        senderCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Sender"));
+        roomCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Room"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Date"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Time"));
+        staffCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Staff"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Status"));
+        mailTable.setItems(mailList);
+    }
 
     @FXML public void handleSignOutBtnOnAction(ActionEvent event) throws IOException
     {
@@ -160,7 +170,7 @@ public class StaffMenuController
 
     public void doubleClicked() throws IOException
     {
-        System.out.println(currentMail);
+        System.out.println(currentMail.getRoom());
         Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/maildetailwindow.fxml"));
@@ -176,7 +186,7 @@ public class StaffMenuController
 
     @FXML public void handleRefreshBtnOnAction(ActionEvent event) throws IOException
     {
-        ObservableList refreshList = FXCollections.observableArrayList(source.readMail());
+        ObservableList refreshList = FXCollections.observableArrayList(source.readMail("in stock"));
         mailTable.setItems(refreshList);
         mailTable.refresh();
     }

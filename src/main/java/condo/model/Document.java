@@ -4,7 +4,7 @@ public class Document extends Mail
 {
     private String priority;
 
-    public Document(String type, String to, String room, String staff, String sender, String address, String size, String image, String date, String time, String receiver, boolean status, String priority)
+    public Document(String type, String to, String room, String staff, String sender, String address, String size, String image, String date, String time, String receiver, String status, String priority)
     {
         super(type, to, room, staff, sender, address, size, image, date, time, receiver, status);
         this.priority = priority;
