@@ -90,3 +90,7 @@
                 * MainProgramCondo.java : Main program
         * Folder : resource
             * Stored GUI's FXML File
+            
+## How to run 6210450032.jar ##
+Double click on 6210450032.jar  
+DON'T FORGET TO READ THE MANUAL
