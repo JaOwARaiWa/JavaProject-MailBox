@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class DeveloperController
 {
-    @FXML Button backBtn;
+    @FXML Button backBtn, aboutBtn;
     @FXML ImageView imageView;
 
     @FXML public void initialize()

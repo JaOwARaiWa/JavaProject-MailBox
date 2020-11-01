@@ -1,6 +1,6 @@
 package condo.model;
 
-public class Document extends Mail
+public class Document extends Letter
 {
     private String priority;
 

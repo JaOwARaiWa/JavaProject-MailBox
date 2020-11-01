@@ -2,8 +2,7 @@ package condo.controller.staff;
 
 import condo.controller.ChangePasswordController;
 import condo.controller.LoginController;
-import condo.model.Mail;
-import condo.model.Room;
+import condo.model.Letter;
 import condo.model.Staff;
 import condo.model.User;
 import condo.process.ProgramDataSource;
@@ -23,25 +22,34 @@ import java.io.IOException;
 
 public class StaffMenuController
 {
-    @FXML Button signOutBtn, addMailBtn, listBtn, changePassBtn, refreshBtn;
+    @FXML Button signOutBtn, addMailBtn, listBtn, changePassBtn, refreshBtn, searchBtn;
     @FXML Label idLabel, nameLabel;
     @FXML TableColumn typeCol, roomCol, senderCol, dateCol, timeCol, staffCol, statusCol;
     @FXML TableView mailTable;
     @FXML TextField searchField;
 
     private User currentUser;
-    private Mail currentMail;
-    private ObservableList<Mail> mailList;
+    private Letter currentLetter;
+    private ObservableList<Letter> letterList;
+    private ObservableList<Letter> showList;
     private ProgramDataSource source = new ProgramDataSourceFile();
+    private int stage = 0;
 
     @FXML public void initialize() throws IOException
     {
-        Platform.runLater(() -> {
+        Platform.runLater(() ->
+        {
             idLabel.setText(currentUser.getId());
             nameLabel.setText(currentUser.getName());
+
         });
 
+        if (stage == 0)
+        {
+            showList = FXCollections.observableArrayList(source.readMail("in stock"));
+        }
         showMailTable();
+
 
         mailTable.setRowFactory( table ->
         {
@@ -50,8 +58,8 @@ public class StaffMenuController
             {
                 if (event.getClickCount() == 2 && (!row.isEmpty()))
                 {
-                    Mail thisMail = (Mail) row.getItem();
-                    setCurrentMail(thisMail);
+                    Letter thisLetter = (Letter) row.getItem();
+                    setCurrentLetter(thisLetter);
                     try
                     {
                         doubleClicked();
@@ -65,26 +73,42 @@ public class StaffMenuController
             return row;
         });
 
+        //try to real time search but its not
         /*searchField.textProperty().addListener((observable, before, after) ->
         {
             if (after != null)
             {
-
+                try {
+                    showList = FXCollections.observableArrayList(source.searchRealtime(after));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mailTable.setItems(showList);
+                mailTable.refresh();
             }
         });*/
+
+    }
+
+    @FXML public void handleSearchBtnOnAction(ActionEvent event) throws IOException
+    {
+        showList = FXCollections.observableArrayList(source.searchMail(searchField.getText()));
+        stage = 1;
+        mailTable.setItems(showList);
+        mailTable.refresh();
     }
 
     public void showMailTable() throws IOException
     {
-        mailList = FXCollections.observableArrayList(source.readMail("in stock"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Type"));
-        senderCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Sender"));
-        roomCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Room"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Date"));
-        timeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Time"));
-        staffCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Staff"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Status"));
-        mailTable.setItems(mailList);
+        letterList = FXCollections.observableArrayList(showList);
+        typeCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Type"));
+        senderCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Sender"));
+        roomCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Room"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Date"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Time"));
+        staffCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Staff"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Status"));
+        mailTable.setItems(letterList);
     }
 
     @FXML public void handleSignOutBtnOnAction(ActionEvent event) throws IOException
@@ -134,6 +158,7 @@ public class StaffMenuController
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mailhistorywindow.fxml"));
         stage.setScene(new Scene(loader.load(), 600, 400));
+        stage.setTitle("6210450032");
 
         MailHistoryController mhct = loader.getController();
 
@@ -170,7 +195,7 @@ public class StaffMenuController
 
     public void doubleClicked() throws IOException
     {
-        System.out.println(currentMail.getRoom());
+        System.out.println(currentLetter.getRoom());
         Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/maildetailwindow.fxml"));
@@ -178,7 +203,7 @@ public class StaffMenuController
         stage.setScene(new Scene(loader.load(), 400, 600));
 
         MailDetailController mdct = loader.getController();
-        mdct.setCurrentMail(currentMail);
+        mdct.setCurrentLetter(currentLetter);
         mdct.setCurrentUser(currentUser);
 
         stage.show();
@@ -191,9 +216,9 @@ public class StaffMenuController
         mailTable.refresh();
     }
 
-    private void setCurrentMail(Mail currentMail)
+    private void setCurrentLetter(Letter currentLetter)
     {
-        this.currentMail = currentMail;
+        this.currentLetter = currentLetter;
     }
 
     public void setCurrentUser(Staff currentUser)

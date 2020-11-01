@@ -4,7 +4,7 @@ import condo.controller.ChangePasswordController;
 import condo.controller.LoginController;
 import condo.controller.staff.MailDetailController;
 import condo.controller.staff.MailHistoryController;
-import condo.model.Mail;
+import condo.model.Letter;
 import condo.model.Resident;
 import condo.model.User;
 import condo.process.ProgramDataSource;
@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ResidentMenuController
 {
@@ -34,10 +33,10 @@ public class ResidentMenuController
     TableColumn typeCol, roomCol, senderCol, dateCol, timeCol, staffCol, statusCol;
 
     private User currentUser;
-    private Mail currentMail;
-    private ObservableList<Mail> mailList;
-    protected ArrayList<Mail> thisRoom = new ArrayList<>();
-    private ArrayList<Mail> temp = new ArrayList<>();
+    private Letter currentLetter;
+    private ObservableList<Letter> letterList;
+    protected ArrayList<Letter> thisRoom = new ArrayList<>();
+    private ArrayList<Letter> temp = new ArrayList<>();
     private ProgramDataSource source = new ProgramDataSourceFile();
 
     @FXML public void initialize() throws IOException
@@ -58,25 +57,25 @@ public class ResidentMenuController
     public void setMailTable() throws IOException {
         temp = source.readMail("in stock");
 
-        for (Mail checkMail : temp)
+        for (Letter checkLetter : temp)
         {
-            if (checkMail.getRoom().equals(((Resident) currentUser).getRoom()))
+            if (checkLetter.getRoom().equals(((Resident) currentUser).getRoom()))
             {
-                thisRoom.add(checkMail);
+                thisRoom.add(checkLetter);
             }
         }
 
         if (thisRoom != null)
         {
-            mailList = FXCollections.observableArrayList(thisRoom);
-            typeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Type"));
-            senderCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Sender"));
-            roomCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Room"));
-            dateCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Date"));
-            timeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Time"));
-            staffCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Staff"));
-            statusCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Status"));
-            mailTable.setItems(mailList);
+            letterList = FXCollections.observableArrayList(thisRoom);
+            typeCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Type"));
+            senderCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Sender"));
+            roomCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Room"));
+            dateCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Date"));
+            timeCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Time"));
+            staffCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Staff"));
+            statusCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Status"));
+            mailTable.setItems(letterList);
 
             mailTable.setRowFactory( table ->
             {
@@ -85,8 +84,8 @@ public class ResidentMenuController
                 {
                     if (event.getClickCount() == 2 && (!row.isEmpty()))
                     {
-                        Mail thisMail = (Mail) row.getItem();
-                        setCurrentMail(thisMail);
+                        Letter thisLetter = (Letter) row.getItem();
+                        setCurrentLetter(thisLetter);
                         try
                         {
                             doubleClicked();
@@ -135,7 +134,7 @@ public class ResidentMenuController
 
     public void doubleClicked() throws IOException
     {
-        System.out.println(currentMail.getRoom());
+        System.out.println(currentLetter.getRoom());
         Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/maildetailwindow.fxml"));
@@ -143,7 +142,7 @@ public class ResidentMenuController
         stage.setScene(new Scene(loader.load(), 400, 600));
 
         MailDetailController mdct = loader.getController();
-        mdct.setCurrentMail(currentMail);
+        mdct.setCurrentLetter(currentLetter);
         mdct.setCurrentUser(currentUser);
 
         stage.show();
@@ -162,9 +161,9 @@ public class ResidentMenuController
         stage.show();
     }
 
-    private void setCurrentMail(Mail currentMail)
+    private void setCurrentLetter(Letter currentLetter)
     {
-        this.currentMail = currentMail;
+        this.currentLetter = currentLetter;
     }
 
     public void setCurrentUser(User currentUser)

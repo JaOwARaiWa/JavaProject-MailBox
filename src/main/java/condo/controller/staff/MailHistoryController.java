@@ -1,6 +1,6 @@
 package condo.controller.staff;
 
-import condo.model.Mail;
+import condo.model.Letter;
 import condo.model.Resident;
 import condo.model.User;
 import condo.process.ProgramDataSource;
@@ -25,11 +25,11 @@ public class MailHistoryController
     @FXML TableColumn typeCol, receiverCol, roomCol, dateCol, timeCol, staffCol;
     @FXML TableView mailTable;
 
-    private ObservableList<Mail> mailList;
-    private ArrayList<Mail> thisRoom = new  ArrayList<>();
-    private ArrayList<Mail> temp = new ArrayList<>();
+    private ObservableList<Letter> letterList;
+    private ArrayList<Letter> thisRoom = new  ArrayList<>();
+    private ArrayList<Letter> temp = new ArrayList<>();
     private ProgramDataSource source = new ProgramDataSourceFile();
-    private Mail currentMail;
+    private Letter currentLetter;
     private User currentUser;
     private int check = 0;
 
@@ -53,11 +53,11 @@ public class MailHistoryController
             {
                 temp = source.readMail("picked up");
 
-                for (Mail checkMail : temp)
+                for (Letter checkLetter : temp)
                 {
-                    if (checkMail.getRoom().equals(((Resident) currentUser).getRoom()))
+                    if (checkLetter.getRoom().equals(((Resident) currentUser).getRoom()))
                     {
-                        thisRoom.add(checkMail);
+                        thisRoom.add(checkLetter);
                     }
                 }
                 check = 1;
@@ -73,14 +73,14 @@ public class MailHistoryController
         {
             if (thisRoom != null)
             {
-                mailList = FXCollections.observableArrayList(thisRoom);
-                typeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Type"));
-                receiverCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Receiver"));
-                roomCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Room"));
-                dateCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Date"));
-                timeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Time"));
-                staffCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Staff"));
-                mailTable.setItems(mailList);
+                letterList = FXCollections.observableArrayList(thisRoom);
+                typeCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Type"));
+                receiverCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Receiver"));
+                roomCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Room"));
+                dateCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Date"));
+                timeCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Time"));
+                staffCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Staff"));
+                mailTable.setItems(letterList);
 
                 mailTable.setRowFactory( table ->
                 {
@@ -89,8 +89,8 @@ public class MailHistoryController
                     {
                         if (event.getClickCount() == 2 && (!row.isEmpty()))
                         {
-                            Mail thisMail = (Mail) row.getItem();
-                            setCurrentMail(thisMail);
+                            Letter thisLetter = (Letter) row.getItem();
+                            setCurrentLetter(thisLetter);
                             try
                             {
                                 doubleClicked();
@@ -112,14 +112,14 @@ public class MailHistoryController
         }
         else
         {
-            mailList = FXCollections.observableArrayList(source.readMail("picked up"));
-            typeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Type"));
-            receiverCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Receiver"));
-            roomCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Room"));
-            dateCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Date"));
-            timeCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Time"));
-            staffCol.setCellValueFactory(new PropertyValueFactory<Mail, String>("Staff"));
-            mailTable.setItems(mailList);
+            letterList = FXCollections.observableArrayList(source.readMail("picked up"));
+            typeCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Type"));
+            receiverCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Receiver"));
+            roomCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Room"));
+            dateCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Date"));
+            timeCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Time"));
+            staffCol.setCellValueFactory(new PropertyValueFactory<Letter, String>("Staff"));
+            mailTable.setItems(letterList);
 
             mailTable.setRowFactory( table ->
             {
@@ -128,8 +128,8 @@ public class MailHistoryController
                 {
                     if (event.getClickCount() == 2 && (!row.isEmpty()))
                     {
-                        Mail thisMail = (Mail) row.getItem();
-                        setCurrentMail(thisMail);
+                        Letter thisLetter = (Letter) row.getItem();
+                        setCurrentLetter(thisLetter);
                         try
                         {
                             doubleClicked();
@@ -147,7 +147,7 @@ public class MailHistoryController
 
     public void doubleClicked() throws IOException
     {
-        System.out.println(currentMail.getRoom());
+        System.out.println(currentLetter.getRoom());
         Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/maildetailwindow.fxml"));
@@ -155,7 +155,7 @@ public class MailHistoryController
         stage.setScene(new Scene(loader.load(), 400, 600));
 
         MailDetailController mdct = loader.getController();
-        mdct.setCurrentMail(currentMail);
+        mdct.setCurrentLetter(currentLetter);
         mdct.setCurrentUser(currentUser);
 
         stage.show();
@@ -168,9 +168,9 @@ public class MailHistoryController
         stage.close();
     }
 
-    private void setCurrentMail(Mail currentMail)
+    private void setCurrentLetter(Letter currentLetter)
     {
-        this.currentMail = currentMail;
+        this.currentLetter = currentLetter;
     }
 
     public void setCurrentUser(User currentUser)

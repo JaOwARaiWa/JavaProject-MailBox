@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.DeveloperController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" styleClass="background1" stylesheets="@pictures/CSS/bg.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.DeveloperController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="441.0" layoutY="162.0" text="Developed by" textAlignment="CENTER">
+      <Label opacity="0.85" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="334.0" layoutY="123.0" text="Developed by" textAlignment="CENTER">
          <font>
-            <Font name="Arial Rounded MT Bold" size="30.0" />
+            <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
       </Label>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="235.0" layoutY="56.0" text="The Elite Box" textAlignment="CENTER">
@@ -18,31 +22,38 @@
             <Font name="Arial Rounded MT Bold" size="50.0" />
          </font>
       </Label>
-      <Label layoutX="142.0" layoutY="162.0" prefHeight="366.0" prefWidth="222.0" style="-fx-background-color: black;" text="Profile" textAlignment="CENTER">
-         <font>
-            <Font name="Mitr Medium" size="12.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="imageView" fitHeight="385.0" fitWidth="216.0" layoutX="145.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="150.0" layoutX="43.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="400.0" layoutY="225.0" prefHeight="35.0" prefWidth="280.0" text="นายเกียรติกุล ทองอุดม   เฟริสท์" textAlignment="CENTER">
+      <Label contentDisplay="CENTER" layoutX="334.0" layoutY="166.0" prefHeight="35.0" prefWidth="280.0" text="นายเกียรติกุล ทองอุดม   เฟริสท์" textAlignment="CENTER">
          <font>
-            <Font name="Arial Rounded MT Bold" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="400.0" layoutY="280.0" prefHeight="35.0" prefWidth="280.0" text="Kiattikun Thongudom   First">
+      <Label layoutX="334.0" layoutY="202.0" prefHeight="35.0" prefWidth="280.0" text="Kiattikun Thongudom   First">
          <font>
-            <Font name="Arial Rounded MT Bold" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="518.0" layoutY="505.0" mnemonicParsing="false" onAction="#handleBackBtnOnAction" prefHeight="40.0" prefWidth="50.0" text="Back" textAlignment="CENTER">
+      <Button fx:id="backBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="375.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleBackBtnOnAction" prefHeight="40.0" prefWidth="50.0" stylesheets="@pictures/CSS/style.css" text="Back" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
-         </font></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="400.0" layoutY="335.0" prefHeight="35.0" prefWidth="280.0" text="6210450032" textAlignment="CENTER">
+         </font>
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="btn0" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label contentDisplay="CENTER" layoutX="334.0" layoutY="237.0" prefHeight="35.0" prefWidth="280.0" text="6210450032" textAlignment="CENTER">
          <font>
-            <Font name="Arial Rounded MT Bold" size="20.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
+      <TextArea layoutX="214.0" layoutY="284.0" prefHeight="234.0" prefWidth="550.0" text="คำแนะนำเกี่ยวกกับโปรแกรม The Elite Box&#10;&#10;โปรแกรมนี้ เป็นโปรแกรมสำหรับการจัดการระบบภายใน Elite Condo ทั้งการเพิ่มห้องว่างใหม่ &#10;การจัดการคนเข้าห้อง และการจัดการจดหมาย โดยผู้ที่ใช้โปรแกรมนี้นั้นจะประกอบไปด้วย&#10;&#10;Admin ของคอนโด ซึ่งมีหน้าที่ดูแลเจ้าหน้าที่ของคอนโด&#10;Staff หรือเจ้าหน้าที่ของคอนโด มีหน้าที่ในการเพิ่มห้อง เพิ่มคน และรับจดหมายที่ส่งมาให้ลูกบ้าน&#10;Resident หรือลูกบ้าน สามารถเข้ามาดูว่ามีของมาส่่งหรือไม่&#10;&#10;สามารถดูคำแนะนำเพิ่มเติมได้ที่ 6210450032.pdf &#10;&#10;ขอบคุณครับ">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </TextArea>
    </children>
 </AnchorPane>

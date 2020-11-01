@@ -1,0 +1,12 @@
+.background0 {
+    -fx-background-color :  linear-gradient(to right, grey,  white)
+}
+
+.btn0 {
+    -fx-background-color : #659962
+}
+
+.btn:hover {
+    -fx-background-color : #35523C;
+    -fx-color : #659962
+}

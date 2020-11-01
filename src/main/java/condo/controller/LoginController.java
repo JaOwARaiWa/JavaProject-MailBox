@@ -24,7 +24,7 @@ public class LoginController
     @FXML Label faultLabel;
     @FXML TextField usernameField;
     @FXML PasswordField passwordField;
-    @FXML ImageView backGround;
+    @FXML ImageView wallpaper;
 
     private User currentUser;
 
@@ -73,7 +73,7 @@ public class LoginController
                 switch (idList.get(i))
                 {
                     case "ADMIN":
-                        currentUser = new Admin(usernameList.get(i), passwordList.get(i), nameList.get(i), idList.get(i));
+                        currentUser = new User(usernameList.get(i), passwordList.get(i), nameList.get(i), idList.get(i));
                         index = i;
                         fault = -1;
                         break;

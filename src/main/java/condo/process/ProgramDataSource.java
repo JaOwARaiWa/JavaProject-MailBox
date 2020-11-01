@@ -22,11 +22,10 @@ public interface ProgramDataSource
     ArrayList<Room> readCondoRoom() throws IOException;
     void updateResidentInRoom(Room currentRoom) throws IOException;
     boolean checkRoomAndOwner(String thisRoom) throws IOException;
-    void addMail(Mail newMail) throws IOException;
-    ArrayList<Mail> readMail(String show) throws IOException;
-    //ArrayList<Mail> readHistory() throws IOException;
-    void pickUpMail(Mail currentMail) throws IOException;
-    //void updateMail(Mail currentMail) throws IOException;
+    void addMail(Letter newLetter) throws IOException;
+    ArrayList<Letter> readMail(String show) throws IOException;
+    ArrayList<Letter> searchMail(String patial) throws IOException;
+    void pickUpMail(Letter currentLetter) throws IOException;
 
     //resident
     void register(Resident newUser) throws IOException;

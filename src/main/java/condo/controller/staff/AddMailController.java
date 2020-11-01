@@ -4,7 +4,6 @@ import condo.model.*;
 import condo.process.ProgramDataSource;
 import condo.process.ProgramDataSourceFile;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,10 +19,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -55,7 +51,7 @@ public class AddMailController
 
     private User currentUser;
     private Path target;
-    private Mail mail;
+    private Letter letter;
     private int check = 0;
 
     private Alert popup = new Alert(Alert.AlertType.NONE);
@@ -182,17 +178,17 @@ public class AddMailController
                 switch (type)
                 {
                     case "Letter":
-                        mail = new Letter(type, resident, room, staff, sender, address, size, image, date, time, "-", "in stock");
+                        letter = new Letter(type, resident, room, staff, sender, address, size, image, date, time, "-", "in stock");
                         break;
                     case "Document":
-                        mail = new Document(type, resident, room, staff, sender, address, size, image, date, time, "-", "in stock", priority);
+                        letter = new Document(type, resident, room, staff, sender, address, size, image, date, time, "-", "in stock", priority);
                         break;
                     case "Parcel":
-                        mail = new Parcel(type, resident, room, staff, sender, address, size, image, date, time, "-" ,"in stock", service, trackNum);
+                        letter = new Parcel(type, resident, room, staff, sender, address, size, image, date, time, "-" ,"in stock", service, trackNum);
                         break;
                 }
 
-                source.addMail(mail);
+                source.addMail(letter);
 
                 popup.setAlertType(Alert.AlertType.INFORMATION);
                 popup.setTitle("Done");

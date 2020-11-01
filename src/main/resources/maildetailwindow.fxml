@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -8,135 +10,149 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.staff.MailDetailController">
+<AnchorPane prefHeight="600.0" prefWidth="400.0" styleClass="background1" stylesheets="@pictures/CSS/bg.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="condo.controller.staff.MailDetailController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="28.0" prefHeight="50.0" prefWidth="192.0" text="Detail">
+      <Label opacity="0.85" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: black;" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="28.0" prefHeight="50.0" prefWidth="192.0" text="Detail" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="pickUpBtn" layoutX="160.0" layoutY="490.0" mnemonicParsing="false" onAction="#handlePickUpBtnOnAction" prefHeight="30.0" prefWidth="80.0" text="Pick up">
+      <Button fx:id="pickUpBtn" layoutX="160.0" layoutY="490.0" mnemonicParsing="false" onAction="#handlePickUpBtnOnAction" prefHeight="30.0" prefWidth="80.0" stylesheets="@pictures/CSS/style.css" text="Pick up">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="btn0" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button fx:id="backBtn" layoutX="175.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleBackBtnOnAction" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: none;" text="Back">
+      <Button fx:id="backBtn" layoutX="175.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleBackBtnOnAction" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: none;" text="Back" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Label layoutX="210.0" layoutY="261.0" prefHeight="30.0" prefWidth="50.0" text="To :">
+      <Label layoutX="210.0" layoutY="261.0" prefHeight="30.0" prefWidth="50.0" text="To :" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
       <Accordion />
-      <Label layoutX="35.0" layoutY="261.0" prefHeight="30.0" prefWidth="50.0" text="From :">
+      <Label layoutX="35.0" layoutY="261.0" prefHeight="30.0" prefWidth="50.0" text="From :" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="210.0" layoutY="293.0" prefHeight="30.0" prefWidth="60.0" text="Room :">
+      <Label layoutX="210.0" layoutY="293.0" prefHeight="30.0" prefWidth="60.0" text="Room :" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="senderLabel" layoutX="85.0" layoutY="261.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="senderLabel" layoutX="85.0" layoutY="261.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="35.0" layoutY="323.0" prefHeight="30.0" prefWidth="50.0" text="Staff :">
+      <Label layoutX="35.0" layoutY="323.0" prefHeight="30.0" prefWidth="50.0" text="Staff :" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
       <ImageView fx:id="mailImage" fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="35.0" layoutY="353.0" prefHeight="30.0" prefWidth="50.0" text="Date :">
+      <Label layoutX="35.0" layoutY="353.0" prefHeight="30.0" prefWidth="50.0" text="Date :" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="210.0" layoutY="353.0" prefHeight="30.0" prefWidth="50.0" text="Time :">
+      <Label layoutX="210.0" layoutY="353.0" prefHeight="30.0" prefWidth="50.0" text="Time :" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="residentLabel" layoutX="258.0" layoutY="261.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="residentLabel" layoutX="258.0" layoutY="261.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="staffLabel" layoutX="85.0" layoutY="323.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="staffLabel" layoutX="85.0" layoutY="323.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="roomLabel" layoutX="260.0" layoutY="293.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="roomLabel" layoutX="260.0" layoutY="293.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="sizeLabel" layoutX="85.0" layoutY="383.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="sizeLabel" layoutX="85.0" layoutY="383.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="timeLabel" layoutX="260.0" layoutY="353.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="timeLabel" layoutX="260.0" layoutY="353.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="35.0" layoutY="293.0" prefHeight="30.0" prefWidth="50.0" text="Type :">
+      <Label layoutX="35.0" layoutY="293.0" prefHeight="30.0" prefWidth="50.0" text="Type :" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="typeLabel" layoutX="85.0" layoutY="293.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="typeLabel" layoutX="85.0" layoutY="293.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="35.0" layoutY="383.0" prefHeight="30.0" prefWidth="50.0" text="Size :">
+      <Label layoutX="35.0" layoutY="383.0" prefHeight="30.0" prefWidth="50.0" text="Size :" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="dateLabel" layoutX="85.0" layoutY="353.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="dateLabel" layoutX="85.0" layoutY="353.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="dynamicLabel" layoutX="35.0" layoutY="413.0" prefHeight="30.0" prefWidth="70.0">
+      <Label fx:id="dynamicLabel" layoutX="35.0" layoutY="413.0" prefHeight="30.0" prefWidth="70.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="detailLabel" layoutX="90.0" layoutY="413.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="detailLabel" layoutX="90.0" layoutY="413.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="dynamicLabel2" layoutX="35.0" layoutY="443.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="dynamicLabel2" layoutX="35.0" layoutY="443.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="detailLabel2" layoutX="150.0" layoutY="443.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="detailLabel2" layoutX="150.0" layoutY="443.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="receiverLabel" layoutX="210.0" layoutY="323.0" prefHeight="30.0" prefWidth="70.0" text="Receiver : ">
+      <Label fx:id="receiverLabel" layoutX="210.0" layoutY="323.0" prefHeight="30.0" prefWidth="70.0" text="Receiver : " textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="receiverNameLabel" layoutX="270.0" layoutY="323.0" prefHeight="30.0" prefWidth="120.0">
+      <Label fx:id="receiverNameLabel" layoutX="270.0" layoutY="323.0" prefHeight="30.0" prefWidth="120.0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="receiverField" layoutX="270.0" layoutY="326.0" prefHeight="25.0" prefWidth="120.0" />
+      <TextField fx:id="receiverField" layoutX="270.0" layoutY="326.0" prefHeight="25.0" prefWidth="120.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
    </children>
 </AnchorPane>

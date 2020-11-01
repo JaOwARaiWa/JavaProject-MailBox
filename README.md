@@ -1,4 +1,4 @@
-#Java Project : Elite Condo
+# Java Project : Elite Condo #
 ##Weekly Results
 * Week 1
     * Add

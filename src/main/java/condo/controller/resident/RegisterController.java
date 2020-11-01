@@ -126,13 +126,7 @@ public class RegisterController
     {
         Button b = (Button) event.getSource();
         Stage stage = (Stage) b.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/loginpage.fxml"));
-        stage.setScene(new Scene(loader.load(), 800, 600));
-
-        LoginController in = loader.getController();
-
-        stage.show();
+        stage.close();
     }
 
 }

@@ -10,7 +10,7 @@
 
     <properties>
         <out.folder>6210450032</out.folder>
-        <out.filename>6210450032-jar</out.filename>
+        <out.filename>6210450032</out.filename>
         <project.mainClass>MainProgramCondo</project.mainClass>
     </properties>
 

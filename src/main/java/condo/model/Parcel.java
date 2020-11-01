@@ -1,6 +1,6 @@
 package condo.model;
 
-public class Parcel extends Mail
+public class Parcel extends Letter
 {
     private String service;
     private String tracknumber;

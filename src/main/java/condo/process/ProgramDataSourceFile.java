@@ -477,16 +477,16 @@ public class ProgramDataSourceFile implements ProgramDataSource
         return check == 1;
     }
 
-    public ArrayList<Mail> readMail(String show) throws IOException
+    public ArrayList<Letter> readMail(String show) throws IOException
     {
         File readFile = new File("csv_file/mail.csv");
         FileReader reader = new FileReader(readFile);
         BufferedReader buffered = new BufferedReader(reader);
         String profile;
-        ArrayList<Mail> pickedUpList = new ArrayList<>();
-        ArrayList<Mail> inStockList = new ArrayList<>();
-        ArrayList<Mail> allMailList = new ArrayList<>();
-        Mail mail = null;
+        ArrayList<Letter> pickedUpList = new ArrayList<>();
+        ArrayList<Letter> inStockList = new ArrayList<>();
+        ArrayList<Letter> allLetterList = new ArrayList<>();
+        Letter letter = null;
         while ((profile = buffered.readLine()) != null)
         {
             String[] al_read = profile.split(",");
@@ -495,60 +495,60 @@ public class ProgramDataSourceFile implements ProgramDataSource
             {
                 if (al_read[0].equals("Letter"))
                 {
-                    mail = new Letter(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
+                    letter = new Letter(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
                             al_read[7], al_read[8], al_read[9], al_read[10], al_read[11]);
                 }
                 else if (al_read[0].equals("Document"))
                 {
-                    mail = new Document(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
+                    letter = new Document(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
                             al_read[7], al_read[8], al_read[9], al_read[10], al_read[11], al_read[12]);
                 }
                 else if (al_read[0].equals("Parcel"))
                 {
-                    mail = new Parcel(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
+                    letter = new Parcel(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
                             al_read[7], al_read[8], al_read[9], al_read[10], al_read[11], al_read[12], al_read[13]);
                 }
-                inStockList.add(mail);
+                inStockList.add(letter);
             }
             else if (al_read[11].equals("picked up"))
             {
                 if (al_read[0].equals("Letter"))
                 {
-                    mail = new Letter(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
+                    letter = new Letter(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
                             al_read[7], al_read[8], al_read[9], al_read[10], al_read[11]);
                 }
                 else if (al_read[0].equals("Document"))
                 {
-                    mail = new Document(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
+                    letter = new Document(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
                             al_read[7], al_read[8], al_read[9], al_read[10], al_read[11], al_read[12]);
                 }
                 else if (al_read[0].equals("Parcel"))
                 {
-                    mail = new Parcel(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
+                    letter = new Parcel(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
                             al_read[7], al_read[8], al_read[9], al_read[10], al_read[11], al_read[12], al_read[13]);
                 }
-                pickedUpList.add(mail);
+                pickedUpList.add(letter);
             }
             else
             {
                 if (al_read[0].equals("Letter"))
                 {
-                    mail = new Letter(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
+                    letter = new Letter(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
                             al_read[7], al_read[8], al_read[9], al_read[10], al_read[11]);
                 }
                 else if (al_read[0].equals("Document"))
                 {
-                    mail = new Document(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
+                    letter = new Document(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
                             al_read[7], al_read[8], al_read[9], al_read[10], al_read[11], al_read[12]);
                 }
                 else if (al_read[0].equals("Parcel"))
                 {
-                    mail = new Parcel(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
+                    letter = new Parcel(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
                             al_read[7], al_read[8], al_read[9], al_read[10], al_read[11], al_read[12], al_read[13]);
                 }
             }
 
-            allMailList.add(mail);
+            allLetterList.add(letter);
         }
         reader.close();
 
@@ -562,170 +562,95 @@ public class ProgramDataSourceFile implements ProgramDataSource
         }
         else
         {
-            return allMailList;
+            return allLetterList;
         }
     }
 
-    public void addMail(Mail newMail) throws IOException
+    public void addMail(Letter newLetter) throws IOException
     {
-        ArrayList<Mail> mailList = readMail("all");
+        ArrayList<Letter> letterList = readMail("all");
 
         File writefile = new File("csv_file/mail.csv");
         FileWriter fileWriter = new FileWriter(writefile);
         BufferedWriter writer = new BufferedWriter(fileWriter);
 
-        mailList.add(0, newMail);
+        letterList.add(0, newLetter);
 
-        for (Mail writeMail : mailList)
+        for (Letter writeLetter : letterList)
         {
-            if (writeMail.getType().equals("Letter"))
+            if (writeLetter.getType().equals("Letter"))
             {
-                writer.write(writeMail.getType() + "," + writeMail.getTo() + "," + writeMail.getRoom() + "," +
-                        writeMail.getStaff() + "," + writeMail.getSender() + "," + writeMail.getAddress() + "," +
-                        writeMail.getSize() + "," + writeMail.getImage() + "," + writeMail.getDate() + "," +
-                        writeMail.getTime() + "," + writeMail.getReceiver() + "," + writeMail.getStatus());
+                writer.write(writeLetter.getType() + "," + writeLetter.getTo() + "," + writeLetter.getRoom() + "," +
+                        writeLetter.getStaff() + "," + writeLetter.getSender() + "," + writeLetter.getAddress() + "," +
+                        writeLetter.getSize() + "," + writeLetter.getImage() + "," + writeLetter.getDate() + "," +
+                        writeLetter.getTime() + "," + writeLetter.getReceiver() + "," + writeLetter.getStatus());
             }
-            else if (writeMail.getType().equals("Document"))
+            else if (writeLetter.getType().equals("Document"))
             {
-                writer.write(writeMail.getType() + "," + writeMail.getTo() + "," + writeMail.getRoom() + "," +
-                        writeMail.getStaff() + "," + writeMail.getSender() + "," + writeMail.getAddress() + "," +
-                        writeMail.getSize() + "," + writeMail.getImage() + "," + writeMail.getDate() + "," +
-                        writeMail.getTime() + "," + writeMail.getReceiver() + "," + writeMail.getStatus() + "," + ((Document) writeMail).getPriority());
+                writer.write(writeLetter.getType() + "," + writeLetter.getTo() + "," + writeLetter.getRoom() + "," +
+                        writeLetter.getStaff() + "," + writeLetter.getSender() + "," + writeLetter.getAddress() + "," +
+                        writeLetter.getSize() + "," + writeLetter.getImage() + "," + writeLetter.getDate() + "," +
+                        writeLetter.getTime() + "," + writeLetter.getReceiver() + "," + writeLetter.getStatus() + "," + ((Document) writeLetter).getPriority());
             }
-            else if (writeMail.getType().equals("Parcel"))
+            else if (writeLetter.getType().equals("Parcel"))
             {
-                writer.write(writeMail.getType() + "," + writeMail.getTo() + "," + writeMail.getRoom() + "," +
-                        writeMail.getStaff() + "," + writeMail.getSender() + "," + writeMail.getAddress() + "," +
-                        writeMail.getSize() + "," + writeMail.getImage() + "," + writeMail.getDate() + "," +
-                        writeMail.getTime() + "," + writeMail.getReceiver() + "," + writeMail.getStatus() + "," + ((Parcel) writeMail).getService() + "," + ((Parcel) writeMail).getTracknum());
+                writer.write(writeLetter.getType() + "," + writeLetter.getTo() + "," + writeLetter.getRoom() + "," +
+                        writeLetter.getStaff() + "," + writeLetter.getSender() + "," + writeLetter.getAddress() + "," +
+                        writeLetter.getSize() + "," + writeLetter.getImage() + "," + writeLetter.getDate() + "," +
+                        writeLetter.getTime() + "," + writeLetter.getReceiver() + "," + writeLetter.getStatus() + "," + ((Parcel) writeLetter).getService() + "," + ((Parcel) writeLetter).getTracknum());
             }
             writer.newLine();
         }
         writer.close();
     }
 
-    public void pickUpMail(Mail currentMail) throws IOException
+    public void pickUpMail(Letter currentLetter) throws IOException
     {
-        ArrayList<Mail> allMailList = readMail("all");
+        ArrayList<Letter> allLetterList = readMail("all");
 
         File writeFile = new File("csv_file/mail.csv");
         FileWriter fileWriter = new FileWriter(writeFile);
         BufferedWriter writer = new BufferedWriter(fileWriter);
 
-        for (Mail checkMail : allMailList)
+        for (Letter checkLetter : allLetterList)
         {
-            if (checkMail.getDate().equals(currentMail.getDate()) && checkMail.getTime().equals(currentMail.getTime()))
+            if (checkLetter.getDate().equals(currentLetter.getDate()) && checkLetter.getTime().equals(currentLetter.getTime()))
             {
-                currentMail.setDate(LocalDate.now().toString());
-                currentMail.setTime(LocalTime.now().toString());
-                allMailList.add(currentMail);
-                allMailList.remove(checkMail);
+                currentLetter.setDate(LocalDate.now().toString());
+                currentLetter.setTime(LocalTime.now().toString());
+                allLetterList.add(currentLetter);
+                allLetterList.remove(checkLetter);
                 break;
             }
         }
 
-        for (Mail writeMail : allMailList)
+        for (Letter writeLetter : allLetterList)
         {
-            if (writeMail.getType().equals("Letter"))
+            if (writeLetter.getType().equals("Letter"))
             {
-                writer.write(writeMail.getType() + "," + writeMail.getTo() + "," + writeMail.getRoom() + "," +
-                        writeMail.getStaff() + "," + writeMail.getSender() + "," + writeMail.getAddress() + "," +
-                        writeMail.getSize() + "," + writeMail.getImage() + "," + writeMail.getDate() + "," +
-                        writeMail.getTime() + "," + writeMail.getReceiver() + "," + writeMail.getStatus());
+                writer.write(writeLetter.getType() + "," + writeLetter.getTo() + "," + writeLetter.getRoom() + "," +
+                        writeLetter.getStaff() + "," + writeLetter.getSender() + "," + writeLetter.getAddress() + "," +
+                        writeLetter.getSize() + "," + writeLetter.getImage() + "," + writeLetter.getDate() + "," +
+                        writeLetter.getTime() + "," + writeLetter.getReceiver() + "," + writeLetter.getStatus());
             }
-            else if (writeMail.getType().equals("Document"))
+            else if (writeLetter.getType().equals("Document"))
             {
-                writer.write(writeMail.getType() + "," + writeMail.getTo() + "," + writeMail.getRoom() + "," +
-                        writeMail.getStaff() + "," + writeMail.getSender() + "," + writeMail.getAddress() + "," +
-                        writeMail.getSize() + "," + writeMail.getImage() + "," + writeMail.getDate() + "," +
-                        writeMail.getTime() + "," + writeMail.getReceiver() + "," + writeMail.getStatus() + "," + ((Document) writeMail).getPriority());
+                writer.write(writeLetter.getType() + "," + writeLetter.getTo() + "," + writeLetter.getRoom() + "," +
+                        writeLetter.getStaff() + "," + writeLetter.getSender() + "," + writeLetter.getAddress() + "," +
+                        writeLetter.getSize() + "," + writeLetter.getImage() + "," + writeLetter.getDate() + "," +
+                        writeLetter.getTime() + "," + writeLetter.getReceiver() + "," + writeLetter.getStatus() + "," + ((Document) writeLetter).getPriority());
             }
-            else if (writeMail.getType().equals("Parcel"))
+            else if (writeLetter.getType().equals("Parcel"))
             {
-                writer.write(writeMail.getType() + "," + writeMail.getTo() + "," + writeMail.getRoom() + "," +
-                        writeMail.getStaff() + "," + writeMail.getSender() + "," + writeMail.getAddress() + "," +
-                        writeMail.getSize() + "," + writeMail.getImage() + "," + writeMail.getDate() + "," +
-                        writeMail.getTime() + "," + writeMail.getReceiver() + "," + writeMail.getStatus() + "," + ((Parcel) writeMail).getService() + "," + ((Parcel) writeMail).getTracknum());
+                writer.write(writeLetter.getType() + "," + writeLetter.getTo() + "," + writeLetter.getRoom() + "," +
+                        writeLetter.getStaff() + "," + writeLetter.getSender() + "," + writeLetter.getAddress() + "," +
+                        writeLetter.getSize() + "," + writeLetter.getImage() + "," + writeLetter.getDate() + "," +
+                        writeLetter.getTime() + "," + writeLetter.getReceiver() + "," + writeLetter.getStatus() + "," + ((Parcel) writeLetter).getService() + "," + ((Parcel) writeLetter).getTracknum());
             }
             writer.newLine();
         }
         writer.close();
     }
-
-    /*public void updateMail(Mail currentMail) throws IOException
-    {
-        ArrayList<Mail> mailList = readMail();
-
-        File writeFile = new File("csv_file/mail.csv");
-        FileWriter fileWriter = new FileWriter(writeFile);
-        BufferedWriter writer = new BufferedWriter(fileWriter);
-
-        mailList.removeIf(mail -> mail.getDate().equals(currentMail.getDate()) && mail.getTime().equals(currentMail.getTime()));
-
-        for (Mail writeMail : mailList)
-        {
-            if (writeMail.getType().equals("Letter"))
-            {
-                writer.write(writeMail.getType() + "," + writeMail.getTo() + "," + writeMail.getRoom() + "," +
-                        writeMail.getStaff() + "," + writeMail.getSender() + "," + writeMail.getAddress() + "," +
-                        writeMail.getSize() + "," + writeMail.getImage() + "," + writeMail.getDate() + "," +
-                        writeMail.getTime() + "," + writeMail.getReceiver() + "," + "in stock");
-            }
-            else if (writeMail.getType().equals("Document"))
-            {
-                writer.write(writeMail.getType() + "," + writeMail.getTo() + "," + writeMail.getRoom() + "," +
-                        writeMail.getStaff() + "," + writeMail.getSender() + "," + writeMail.getAddress() + "," +
-                        writeMail.getSize() + "," + writeMail.getImage() + "," + writeMail.getDate() + "," +
-                        writeMail.getTime() + "," + writeMail.getReceiver() + "," + "in stock" + "," + ((Document) writeMail).getPriority());
-            }
-            else if (writeMail.getType().equals("Parcel"))
-            {
-                writer.write(writeMail.getType() + "," + writeMail.getTo() + "," + writeMail.getRoom() + "," +
-                        writeMail.getStaff() + "," + writeMail.getSender() + "," + writeMail.getAddress() + "," +
-                        writeMail.getSize() + "," + writeMail.getImage() + "," + writeMail.getDate() + "," +
-                        writeMail.getTime() + "," + writeMail.getReceiver() + "," + "in stock" + "," + ((Parcel) writeMail).getService() + "," + ((Parcel) writeMail).getTracknum());
-            }
-            writer.newLine();
-        }
-        writer.close();
-    }*/
-
-    /*public ArrayList<Mail> readHistory() throws IOException
-    {
-        ArrayList<Mail> mailList = new ArrayList<>();
-
-        File readFile = new File("csv_file/history.csv");
-        FileReader reader = new FileReader(readFile);
-        BufferedReader buffered = new BufferedReader(reader);
-        String profile;
-        Mail mail = null;
-        while ((profile = buffered.readLine()) != null)
-        {
-            String[] al_read = profile.split(",");
-
-            if (al_read[0].equals("Letter"))
-            {
-                mail = new Letter(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
-                        al_read[7], al_read[8], al_read[9], al_read[10], false);
-            }
-            else if (al_read[0].equals("Document"))
-            {
-                mail = new Document(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
-                        al_read[7], al_read[8], al_read[9], al_read[10], false, al_read[12]);
-            }
-            else if (al_read[0].equals("Parcel"))
-            {
-                mail = new Parcel(al_read[0], al_read[1], al_read[2], al_read[3], al_read[4], al_read[5], al_read[6],
-                        al_read[7], al_read[8], al_read[9], al_read[10], false, al_read[12], al_read[13]);
-            }
-
-            mailList.add(mail);
-
-        }
-        reader.close();
-
-        return mailList;
-    }*/
 
     public void register(Resident newUser) throws IOException
     {
@@ -771,13 +696,20 @@ public class ProgramDataSourceFile implements ProgramDataSource
         writer.close();
     }
 
-    /*public ArrayList<Mail> searchRealtime(String patial)
+    public ArrayList<Letter> searchMail(String partial) throws IOException
     {
-        ArrayList<Mail> mailList = readMail("all");
+        ArrayList<Letter> letterList = readMail("in stock");
+        ArrayList<Letter> showList = new ArrayList<>();
 
-        
+        for (Letter checkLetter : letterList)
+        {
+            if (checkLetter.getRoom().contains(partial.toUpperCase()))
+            {
+                showList.add(checkLetter);
+            }
+        }
 
-        return mailList;
-    }*/
+        return showList;
+    }
 
 }

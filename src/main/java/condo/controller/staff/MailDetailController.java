@@ -1,7 +1,7 @@
 package condo.controller.staff;
 
 import condo.model.Document;
-import condo.model.Mail;
+import condo.model.Letter;
 import condo.model.Parcel;
 import condo.model.User;
 import condo.process.ProgramDataSource;
@@ -9,7 +9,6 @@ import condo.process.ProgramDataSourceFile;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,8 +17,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class MailDetailController
 {
@@ -28,7 +25,7 @@ public class MailDetailController
     @FXML ImageView mailImage;
     @FXML TextField receiverField;
 
-    private Mail currentMail;
+    private Letter currentLetter;
     private User currentUser;
     private Path image;
     private Alert popup = new Alert(Alert.AlertType.NONE);
@@ -38,14 +35,14 @@ public class MailDetailController
     {
         Platform.runLater(() ->
         {
-            senderLabel.setText(currentMail.getSender());
-            typeLabel.setText(currentMail.getType());
-            residentLabel.setText(currentMail.getTo());
-            roomLabel.setText(currentMail.getRoom());
-            staffLabel.setText(currentMail.getStaff());
-            dateLabel.setText(currentMail.getDate());
-            timeLabel.setText(currentMail.getTime());
-            sizeLabel.setText(currentMail.getSize());
+            senderLabel.setText(currentLetter.getSender());
+            typeLabel.setText(currentLetter.getType());
+            residentLabel.setText(currentLetter.getTo());
+            roomLabel.setText(currentLetter.getRoom());
+            staffLabel.setText(currentLetter.getStaff());
+            dateLabel.setText(currentLetter.getDate());
+            timeLabel.setText(currentLetter.getTime());
+            sizeLabel.setText(currentLetter.getSize());
 
             if (currentUser != null)
             {
@@ -61,38 +58,38 @@ public class MailDetailController
                 }
             }
 
-            if (currentMail.getType().equals("Document"))
+            if (currentLetter.getType().equals("Document"))
             {
                 dynamicLabel.setText("Priority : ");
-                detailLabel.setText(((Document) currentMail).getPriority());
+                detailLabel.setText(((Document) currentLetter).getPriority());
             }
-            else if (currentMail.getType().equals("Parcel"))
+            else if (currentLetter.getType().equals("Parcel"))
             {
                 dynamicLabel.setText("Service : ");
-                detailLabel.setText(((Parcel) currentMail).getService());
+                detailLabel.setText(((Parcel) currentLetter).getService());
                 dynamicLabel2.setText("Tracking number : ");
-                detailLabel2.setText(((Parcel) currentMail).getTracknum());
+                detailLabel2.setText(((Parcel) currentLetter).getTracknum());
             }
 
-            image = FileSystems.getDefault().getPath(currentMail.getImage());
+            image = FileSystems.getDefault().getPath(currentLetter.getImage());
             mailImage.setImage(new Image(image.toUri().toString()));
 
-            if (!currentMail.getStatus().equals("in stock"))
+            if (!currentLetter.getStatus().equals("in stock"))
             {
                 pickUpBtn.setVisible(false);
                 receiverField.setVisible(false);
-                receiverNameLabel.setText(currentMail.getReceiver());
+                receiverNameLabel.setText(currentLetter.getReceiver());
             }
         });
     }
 
     @FXML public void handlePickUpBtnOnAction(ActionEvent event) throws IOException
     {
-        currentMail.setStaff(currentUser.getName());
-        currentMail.setReceiver(receiverField.getText());
-        currentMail.setStatus("picked up");
+        currentLetter.setStaff(currentUser.getName());
+        currentLetter.setReceiver(receiverField.getText());
+        currentLetter.setStatus("picked up");
 
-        source.pickUpMail(currentMail);
+        source.pickUpMail(currentLetter);
 
         popup.setAlertType(Alert.AlertType.INFORMATION);
         popup.setTitle("Done");
@@ -116,9 +113,9 @@ public class MailDetailController
         stage.close();
     }
 
-    public void setCurrentMail(Mail currentMail)
+    public void setCurrentLetter(Letter currentLetter)
     {
-        this.currentMail = currentMail;
+        this.currentLetter = currentLetter;
     }
 
     public void setCurrentUser(User currentUser)
