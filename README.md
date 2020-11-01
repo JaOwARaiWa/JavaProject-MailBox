@@ -1,5 +1,5 @@
 # Java Project : Elite Condo #
-##Weekly Results
+## Weekly Results ##
 * Week 1
     * Add
         * Add marven to project
@@ -53,7 +53,25 @@
         * Controllers and Models
     * Note : Table can show staff and last logged in
     
-##File Structure
+* Week 6
+    * Add
+        * Controllers
+    * Remove
+        * None
+    * Update
+        * Cotrollers, Models, and Features
+    * Note : Alert and Window pop-up 
+    
+* Week 7
+    * Add
+        * Controllers
+    * Remove
+        * Models and csv files
+    * Update
+        * Controllers and Features
+    * Note : Fixed some bug
+    
+## File Structure ##
 * Folder : csv_file
     * Stored all CSV File in this project
 * Folder : image
