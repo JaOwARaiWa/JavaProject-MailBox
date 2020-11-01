@@ -140,7 +140,7 @@ public class LoginController
                 stage.setScene(new Scene(loader.load(), 800, 600));
 
                 ResidentMenuController menu = loader.getController();
-                menu.setCurrentUser((Resident) currentUser);
+                menu.setCurrentUser(currentUser);
 
                 stage.show();
                 break;
@@ -149,7 +149,7 @@ public class LoginController
                 popup.setAlertType(Alert.AlertType.ERROR);
                 popup.setTitle("Login failed");
                 popup.setHeaderText("Wrong user or password, please try again");
-                popup.setContentText("Please check your username amd password");
+                popup.setContentText("Please check your username and password");
                 popup.showAndWait();
                 faultLabel.setText("Wrong user or password, please try again");
                 currentUser.reset();
@@ -168,7 +168,8 @@ public class LoginController
 
         RegisterController rgct = loader.getController();
 
-        stage.show();
+        stage.showAndWait();
+        refresh();
     }
 
     @FXML public void handleCreditBtnOnAction(ActionEvent event) throws IOException
@@ -182,6 +183,18 @@ public class LoginController
         DeveloperController dev = loader.getController();
 
         stage.show();
+    }
+
+    public void refresh() throws IOException
+    {
+        acc = programDataSource.readAllAccount();
+        idList = (ArrayList<String>) acc.get(0);
+        usernameList = (ArrayList<String>) acc.get(1);
+        passwordList = (ArrayList<String>) acc.get(2);
+        nameList = (ArrayList<String>) acc.get(3);
+        roomList = (ArrayList<String>) acc.get(4);
+
+        limit = idList.size();
     }
 
     /*public void setCurrentuser(User currentuser)

@@ -66,6 +66,14 @@ public class RoomListController
         });
     }
 
+    public void refresher() throws IOException
+    {
+        ObservableList refreshList = FXCollections.observableArrayList(source.readCondoRoom());
+        residentTable.setItems(refreshList);
+        residentTable.refresh();
+    }
+
+
     @FXML public void handleRefreshBtnOnAction(ActionEvent event) throws IOException
     {
         ObservableList refreshList = FXCollections.observableArrayList(source.readCondoRoom());
@@ -99,7 +107,8 @@ public class RoomListController
         AddResidentController arct = loader.getController();
         arct.setCurrentRoom(currentRoom);
 
-        stage.show();
+        stage.showAndWait();
+        refresher();
     }
 
 

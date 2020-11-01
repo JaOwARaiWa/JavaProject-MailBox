@@ -165,6 +165,13 @@ public class StaffMenuController
         stage.show();
     }
 
+    public void refresher() throws IOException
+    {
+        ObservableList refreshList = FXCollections.observableArrayList(source.readMail("in stock"));
+        mailTable.setItems(refreshList);
+        mailTable.refresh();
+    }
+
     @FXML public void handleListBtnOnAction(ActionEvent event) throws IOException
     {
         Button b = (Button) event.getSource();
@@ -206,7 +213,8 @@ public class StaffMenuController
         mdct.setCurrentLetter(currentLetter);
         mdct.setCurrentUser(currentUser);
 
-        stage.show();
+        stage.showAndWait();
+        refresher();
     }
 
     @FXML public void handleRefreshBtnOnAction(ActionEvent event) throws IOException
